@@ -3,11 +3,12 @@ import 'package:rive/rive.dart';
 
 class RiveModel {
   final String src, artboard, stateMachineName;
-  late SMIBool? status;
+  late SMIBool? status, j;
   RiveModel({
     required this.src,
     required this.artboard,
     required this.stateMachineName,
     this.status,
   });
+  // hello
 }
