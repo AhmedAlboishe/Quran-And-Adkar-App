@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quran/screens/home_screen.dart';
+import 'package:quran/bottom_nav_bar_animation_icon.dart';
 
 void main() {
   runApp(const QuranApp());
@@ -15,8 +15,7 @@ class QuranApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
       ),
-      home: const HomeScreen(),
+      home: const BottonNavWithAnimatedIcons(),
     );
   }
 }
-
