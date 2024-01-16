@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:quran/screens/fav_screen.dart';
-import 'package:quran/screens/home_screen.dart';
-import 'package:quran/screens/quran_screen.dart';
-import 'package:quran/screens/settings_screen.dart';
+import 'package:quran/ui/screens/fav_screen.dart';
+import 'package:quran/ui/screens/home_screen.dart';
+import 'package:quran/ui/screens/quran_screen.dart';
+import 'package:quran/ui/screens/settings_screen.dart';
 
 const Color bottonNavBgColor = Color(0xff17203A);
 
@@ -29,13 +29,33 @@ class _BottonNavWithAnimatedIconsState
     const FavScreen(),
     const SettingsScreen(),
   ];
+  final PageController controller = PageController(initialPage: 0);
 
+  // loadImage() async {
+  //   try {
+  //     await precacheImage(
+  //         const AssetImage('assets/images/sunrise.jpg'), context);
+  //     print('*--Finish:: ✅✅');
+  //   } catch (e) {
+  //     print('*--error:: $e');
+  //   }
+  // }
+
+  // Future.delayed(Duration.zero, loadImage);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: pages[selectedNavIndex],
+      extendBody: true,
+      body: PageView(
+        controller: controller,
+        physics: const NeverScrollableScrollPhysics(),
+        children: List.generate(
+          4,
+          (index) => pages[index],
+        ),
+      ),
       bottomNavigationBar: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 24, vertical: 15),
+        margin: const EdgeInsets.only(left: 24, right: 24, bottom: 15),
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
           color: bottonNavBgColor.withOpacity(0.8),
@@ -57,6 +77,7 @@ class _BottonNavWithAnimatedIconsState
                   setState(() {
                     selectedNavIndex = index;
                   });
+                  controller.jumpToPage(index);
                 },
                 child: Column(
                   mainAxisSize: MainAxisSize.min,

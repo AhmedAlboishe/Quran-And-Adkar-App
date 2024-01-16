@@ -29,7 +29,7 @@ class Themes {
     splashColor: darkiconClr.withOpacity(0.1),
     hoverColor: Colors.transparent,
     highlightColor: darkiconClr.withOpacity(0.1),
-    fontFamily: 'Tajawal',
+    fontFamily: 'Ibmp',
   );
   static final dark = ThemeData(
     useMaterial3: true,
@@ -50,17 +50,17 @@ class Themes {
     splashColor: iconClr.withOpacity(0.1),
     hoverColor: Colors.transparent,
     highlightColor: iconClr.withOpacity(0.1),
-    fontFamily: 'Tajawal',
+    fontFamily: 'Ibmp',
   );
 }
 
 TextStyle get textStyle => TextStyle(
-      fontFamily: 'Tajawal',
+      fontFamily: 'Ibmp',
       color: Get.isDarkMode ? darkTextClr : black,
     );
 
 TextStyle get headeTtextStyle => const TextStyle(
-      fontFamily: 'Tajawal',
+      fontFamily: 'Ibmp',
       fontSize: 14,
       overflow: TextOverflow.ellipsis,
     );
