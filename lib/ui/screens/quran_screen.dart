@@ -14,6 +14,7 @@ class _QuranScreenState extends State<QuranScreen> {
       appBar: AppBar(
         title: const Text('القرآن الكريم'),
       ),
+      body: const Center(child: Text('قريباً')),
     );
   }
 }

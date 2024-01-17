@@ -25,7 +25,10 @@ class _CustomCategoryState extends State<CustomCategory>
     return Expanded(
       child: GestureDetector(
         onTap: () {
-          Get.to(() => AdkarScreen(title: widget.title));
+          Get.to(
+            () => AdkarScreen(title: widget.title),
+            transition: Transition.fade,
+          );
         },
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),

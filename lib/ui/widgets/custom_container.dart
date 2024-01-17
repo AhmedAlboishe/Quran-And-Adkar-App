@@ -3,18 +3,18 @@ import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:quran/ui/theme.dart';
+// import 'package:share_plus/share_plus.dart';
 
-class CustomNames extends StatelessWidget {
-  const CustomNames({
+class CustomContainer extends StatelessWidget {
+  const CustomContainer({
     super.key,
-    required this.data,
+    required this.subTitle,
+    required this.title,
   });
-  final String data;
+  final String subTitle;
+  final String title;
   @override
   Widget build(BuildContext context) {
-    String name = data.split(':')[0];
-    String meaning = data.split(':')[1];
-
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
       child: PhysicalModel(
@@ -25,7 +25,7 @@ class CustomNames extends StatelessWidget {
         elevation: 4,
         borderRadius: BorderRadius.circular(15),
         child: Container(
-          // height: 150,
+          // height: 80,
           padding:
               const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 20),
           decoration: BoxDecoration(
@@ -37,30 +37,16 @@ class CustomNames extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              const Row(
+              Row(
                 children: [
-                  Text('أسماء الله الحسنى'),
+                  Text(title),
                 ],
               ),
               const SizedBox(
-                height: 20,
-              ),
-              Transform.scale(
-                scale: 4,
-                child: Text(
-                  name,
-                  // textAlign: TextAlign.left,
-                  style: TextStyle(
-                    fontFamily:
-                        Get.isDarkMode ? 'Tashkeel-white' : 'Tashkeel-black',
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 30,
+                height: 10,
               ),
               Text(
-                meaning,
+                subTitle,
                 textAlign: TextAlign.center,
               ),
               const SizedBox(
@@ -71,7 +57,7 @@ class CustomNames extends StatelessWidget {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      Clipboard.setData(ClipboardData(text: meaning));
+                      Clipboard.setData(ClipboardData(text: subTitle));
                       Fluttertoast.showToast(msg: 'تم النسخ');
                     },
                     child: Image.asset(
@@ -97,7 +83,7 @@ class CustomNames extends StatelessWidget {
                     ),
                   ),
                 ],
-              ),
+              )
             ],
           ),
         ),

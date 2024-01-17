@@ -1,6 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:quran/ui/screens/fav_screen.dart';
+import 'package:quran/ui/screens/all_adkar_screen.dart';
 import 'package:quran/ui/screens/home_screen.dart';
 import 'package:quran/ui/screens/quran_screen.dart';
 import 'package:quran/ui/screens/settings_screen.dart';
@@ -16,17 +15,17 @@ class BottonNavWithAnimatedIcons extends StatefulWidget {
 
 class _BottonNavWithAnimatedIconsState
     extends State<BottonNavWithAnimatedIcons> {
-  List<IconData> iconInputs = [
-    CupertinoIcons.home,
-    Icons.mosque_outlined,
-    CupertinoIcons.heart,
-    CupertinoIcons.gear,
+  List<String> iconInputs = [
+    'assets/icons/home.png',
+    'assets/icons/book-open.png',
+    'assets/icons/grid.png',
+    'assets/icons/settings.png',
   ];
   int selectedNavIndex = 0;
   List<Widget> pages = [
     const HomeScreen(),
     const QuranScreen(),
-    const FavScreen(),
+    const AllAdkarScreen(),
     const SettingsScreen(),
   ];
   final PageController controller = PageController(initialPage: 0);
@@ -86,14 +85,14 @@ class _BottonNavWithAnimatedIconsState
                       isActive: selectedNavIndex == index,
                     ),
                     SizedBox(
-                      height: 36,
+                      // height: 36,
                       width: 42,
                       child: Opacity(
                         opacity: selectedNavIndex == index ? 1 : 0.5,
-                        child: Icon(
+                        child: Image.asset(
                           iconInputs[index],
                           color: Colors.white,
-                          size: selectedNavIndex == index ? 30 : 27,
+                          height: selectedNavIndex == index ? 35 : 30,
                         ),
                       ),
                     ),

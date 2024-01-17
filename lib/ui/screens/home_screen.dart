@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:quran/ui/widgets/custom_ayaa.dart';
+import 'package:quran/ui/widgets/custom_container.dart';
 import 'package:quran/ui/widgets/custom_category.dart';
 import 'package:quran/ui/widgets/custom_praise.dart';
 import 'package:quran/ui/widgets/cutom_details.dart';
@@ -66,14 +66,20 @@ class _HomeScreenState extends State<HomeScreen>
                 ),
               ],
             ),
-            const CustomAyaa(
-              ayaa:
+            const CustomContainer(
+              title: 'آية من القرآن',
+              subTitle:
                   '(وَمَن يَعْمَلْ سُوءًا أَوْ يَظْلِمْ نَفْسَهُ ثُمَّ يَسْتَغْفِرِ اللَّـهَ يَجِدِ اللَّـهَ غَفُورًا رَّحِيمًا)\n[سورة النساء، آية: 110]',
             ),
             const CustomPraise(
               titel: 'سبحان الله وبحمده، سبحان الله العظيم',
             ),
             CustomNames(data: getData),
+            const CustomContainer(
+              title: 'دعاء',
+              subTitle:
+                  'اللهم حرر فلسطين، والمسجد الأقصى من كيد المعتدين، وكن يا الله عوناً لإخواننا في فلسطين',
+            ),
             const SizedBox(
               height: 10,
             ),

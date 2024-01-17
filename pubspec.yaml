@@ -39,19 +39,39 @@ dependencies:
   get_storage: ^2.1.1
   vibration: ^1.8.4
   flutter_staggered_animations: ^1.1.1
-  flutter_cache_manager: ^3.3.1
-  path_provider: ^2.1.2
+  # share_plus: ^7.2.1
+  fluttertoast: ^8.2.4
+  hijri: ^3.0.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_lints: ^2.0.0
+  icons_launcher: ^2.1.7
+icons_launcher:
+  image_path: "assets/appIcon.jpg"
+  platforms:
+    android:
+      enable: true
+    ios:
+      enable: false
+#   flutter_launcher_icons: ^0.13.1
 
+# flutter_launcher_icons:
+#   android: "launcher_icon"
+#   ios: true
+#   remove_alpha_ios: true
+#   image_path: "assets/appIcon.png"
+#   # adaptive_icon_background: "assets/icons/backGround.png" # only available for Android 8.0 devices and above
+#   # adaptive_icon_foreground: "assets/icons/forfroun.png" 
+#   min_sdk_android: 21 # android min sdk min:16, default 21
+  # web:
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^2.0.0
+  
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -68,6 +88,7 @@ flutter:
   assets:
     - assets/images/
     - assets/images/image2.png
+    - assets/icons/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -98,7 +119,7 @@ flutter:
         - asset: fonts/AllahNames4-ow1vV.ttf
     - family: Rubik
       fonts: 
-        - asset: fonts/Rubik-Regular.ttf
+        - asset: fonts/Parastoo.ttf
 
         # fonts\AllahNames99-0Wav4.ttf pupr
         
