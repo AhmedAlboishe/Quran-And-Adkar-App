@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:quran/ui/theme.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:vibration/vibration.dart';
 
 class CustomPraise extends StatefulWidget {
@@ -108,7 +109,7 @@ class _CustomPraiseState extends State<CustomPraise>
                     ),
                     GestureDetector(
                       onTap: () {
-                        // Share
+                        Share.share(widget.titel);
                       },
                       child: Image.asset(
                         'assets/icons/share-2.png',

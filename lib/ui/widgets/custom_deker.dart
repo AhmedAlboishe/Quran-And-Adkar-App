@@ -10,9 +10,11 @@ class CustomDeker extends StatefulWidget {
     super.key,
     required this.data,
     required this.onDisappear,
+    required this.onTapCount,
   });
   final Map data;
   final Function onDisappear;
+  final Function onTapCount;
   @override
   State<CustomDeker> createState() => _CustomDekerState();
 }
@@ -57,9 +59,8 @@ class _CustomDekerState extends State<CustomDeker>
                       borderRadius: BorderRadius.circular(15),
                       child: GestureDetector(
                         onTap: () {
-                          if (count < times - 1) {
-                            Vibration.vibrate(duration: 30);
-                          }
+                          Vibration.vibrate(duration: 30);
+                          widget.onTapCount();
                           setState(() {
                             count++;
                           });

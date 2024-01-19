@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:quran/ui/theme.dart';
+import 'package:share_plus/share_plus.dart';
 // import 'package:share_plus/share_plus.dart';
 
 class CustomContainer extends StatelessWidget {
@@ -74,7 +75,7 @@ class CustomContainer extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () {
-                      // Share
+                      Share.share(subTitle);
                     },
                     child: Image.asset(
                       'assets/icons/share-2.png',

@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:quran/ui/theme.dart';
+import 'package:share_plus/share_plus.dart';
 
 class CustomNames extends StatelessWidget {
   const CustomNames({
@@ -88,7 +89,7 @@ class CustomNames extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () {
-                      // Share
+                      Share.share(meaning);
                     },
                     child: Image.asset(
                       'assets/icons/share-2.png',

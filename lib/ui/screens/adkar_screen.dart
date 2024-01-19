@@ -3,8 +3,14 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
+import 'package:quran/services/adkar_service.dart';
+import 'package:quran/services/theme_services.dart';
+import 'package:quran/ui/size_config.dart';
+import 'package:quran/ui/theme.dart';
+import 'package:quran/ui/widgets/custom_counter.dart';
 
 import 'package:quran/ui/widgets/custom_deker.dart';
+import 'package:quran/ui/widgets/custom_exit_button.dart';
 
 class AdkarScreen extends StatefulWidget {
   const AdkarScreen({super.key, required this.title});
@@ -62,59 +68,141 @@ class _AdkarScreenState extends State<AdkarScreen>
       'times': 1
     },
   ];
-
+  int count = 0;
+  final adkarServices = AdkarServices();
+  bool disposes = false;
   int disappearedCount = 0;
+  bool showExit = false;
+  int totalAdkar = 0;
+  void _countOnTap() {
+    count++;
+    adkarServices.saveAdkarNumberToStorage(totalAdkar: count + totalAdkar);
+  }
+
+  @override
+  void initState() {
+    totalAdkar = adkarServices.loadTotalAdkarFromStorage();
+    super.initState();
+  }
 
   void _onDekerDisappear() {
     log('_onDekerDisappear $disappearedCount');
     disappearedCount++;
     if (disappearedCount == adkar.length) {
       // تنفيذ الكود الذي تريده عند اختفاء جميع العناصر
-      _showOverlayMessage("تم اختفاء جميع العناصر");
+      // _showOverlayMessage("تم اختفاء جميع العناصر");
+      totalAdkar = adkarServices.loadTotalAdkarFromStorage();
       setState(() {});
-      Future.delayed(const Duration(seconds: 2), () {
+      Future.delayed(const Duration(milliseconds: 1200), () {
         if (mounted) {
-          // log('we back');
-          Get.back();
+          setState(() {
+            showExit = true;
+          });
         }
       });
     }
   }
 
-  void _showOverlayMessage(String message) {
-    // يمكنك هنا استخدام Overlay لعرض رسالة أو إجراء معين
-    // ...
-    log(message);
-    // إعادة تعيين عدد العناصر المختفية بمجرد عرض الرسالة
-    // disappearedCount = 0;
-  }
-
+  // void _showOverlayMessage(String message) {
+  //   // يمكنك هنا استخدام Overlay لعرض رسالة أو إجراء معين
+  //   // ...
+  //   log(message);
+  //   // إعادة تعيين عدد العناصر المختفية بمجرد عرض الرسالة
+  //   // disappearedCount = 0;
+  // }
+  bool isDarkMode = Get.isDarkMode;
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: PageStorage(
-        bucket: PageStorageBucket(),
-        child: disappearedCount != adkar.length
-            ? AnimationLimiter(
-                child: ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: adkar.length,
-                    physics: const BouncingScrollPhysics(),
-                    itemBuilder: (context, index) {
-                      return CustomDeker(
-                        data: adkar[index],
-                        onDisappear: _onDekerDisappear,
-                      );
-                    }),
-              )
-            : const Center(child: Text('لقد انتهيت')),
+    // SizeConfig().init;
+    return PopScope(
+      canPop: showExit ? true : false,
+      onPopInvoked: (didPop) {
+        log('pop scope $didPop');
+        totalAdkar = adkarServices.loadTotalAdkarFromStorage();
+        setState(() {
+          disposes = true;
+        });
+        Future.delayed(const Duration(milliseconds: 1200), () {
+          if (mounted) {
+            setState(() {
+              showExit = true;
+            });
+          }
+        });
+        log('disposes $disposes');
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(widget.title),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.only(left: 15),
+              child: GestureDetector(
+                onTap: () {
+                  ThemeServices().switchThemeMode();
+                  setState(() {
+                    isDarkMode = !isDarkMode;
+                  });
+                },
+                child: Image.asset(
+                  isDarkMode ? 'assets/icons/sun.png' : 'assets/icons/moon.png',
+                  color: isDarkMode ? darkTextClr : Colors.black,
+                  height: getProportionateScreenWidth(25),
+                ),
+              ),
+            ),
+          ],
+        ),
+        body: PageStorage(
+          bucket: PageStorageBucket(),
+          child: disappearedCount != adkar.length && disposes == false
+              ? AnimationLimiter(
+                  child: ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: adkar.length,
+                      physics: const BouncingScrollPhysics(),
+                      itemBuilder: (context, index) {
+                        return CustomDeker(
+                          data: adkar[index],
+                          onTapCount: _countOnTap,
+                          onDisappear: _onDekerDisappear,
+                        );
+                      }),
+                )
+              : ListView(
+                  physics: const BouncingScrollPhysics(),
+                  children: [
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    CustomCounter(
+                      title: 'عدد الأذكار التي قرأتها',
+                      targetValue: count,
+                    ),
+                    CustomCounter(
+                      title: 'مجموع الأذكار          ',
+                      targetValue: totalAdkar,
+                    ),
+                    Visibility(
+                      visible: showExit,
+                      child: const CustomExitButton(),
+                    )
+                  ],
+                ),
+        ),
       ),
     );
   }
+  // @override
+  // void dispose() {
+  //   setState(() {
+  //     disposes = true;
+  //   });
+  //   Future.delayed(const Duration(seconds: 10), () {
+  //     super.dispose();
+  //   });
+  // }
 
   @override
   bool get wantKeepAlive => true;

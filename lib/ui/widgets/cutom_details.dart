@@ -5,11 +5,11 @@ import 'package:quran/ui/size_config.dart';
 
 class CustomDetails extends StatelessWidget {
   const CustomDetails({super.key});
-  getTime() {
-    HijriCalendar today = HijriCalendar.now();
+  String getDate() {
     HijriCalendar.setLocal('ar');
+    HijriCalendar today = HijriCalendar.now();
 
-    return '${today.hDay} ${today.longMonthName} | ${today.hYear} هجري';
+    return '${today.dayWeName}، ${today.hDay} ${today.longMonthName}\n${today.hYear} هـ\n';
   }
 
   @override
@@ -55,7 +55,7 @@ class CustomDetails extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    getTime(),
+                    getDate(),
                     // overflow: TextOverflow.visible,
                     style: TextStyle(fontSize: getProportionateScreenWidth(11)),
                   ),
