@@ -43,7 +43,8 @@ dependencies:
   fluttertoast: ^8.2.4
   hijri: ^3.0.0
   wave: ^0.2.2
-
+  rive: ^0.12.4
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -110,9 +111,12 @@ flutter:
     - family: Tashkeel-white
       fonts: 
         - asset: fonts/AllahNames4-ow1vV.ttf
-    - family: Rubik
+    - family: Parastoo
       fonts: 
-        - asset: fonts/Parastoo.ttf
+        - asset: fonts/Parastoo.ttf 
+    - family: Uthmani
+      fonts: 
+        - asset: fonts/UthmanicQaloun V21.ttf
 
         # fonts\AllahNames99-0Wav4.ttf pupr
         

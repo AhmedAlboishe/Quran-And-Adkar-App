@@ -10,9 +10,10 @@ class CustomExitButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
+
     return Padding(
         padding: EdgeInsets.only(
-            top: getProportionateScreenHeight(200),
             left: getProportionateScreenWidth(140),
             right: getProportionateScreenWidth(140)),
         child: AnimationConfiguration.synchronized(

@@ -44,7 +44,7 @@ class _CustomCounterState extends State<CustomCounter>
 
   @override
   Widget build(BuildContext context) {
-    // SizeConfig().init;
+    SizeConfig().init(context);
 
     return AnimationConfiguration.staggeredList(
       position: 0,
@@ -57,6 +57,16 @@ class _CustomCounterState extends State<CustomCounter>
           child: Container(
             height: getProportionateScreenWidth(80),
             decoration: BoxDecoration(
+              color: context.theme.colorScheme.background,
+              boxShadow: [
+                BoxShadow(
+                  color: Get.isDarkMode
+                      ? const Color(0x1FFFFFFF)
+                      : const Color(0x29000000),
+                  offset: const Offset(1, 4),
+                  blurRadius: 5,
+                )
+              ],
               border: Border.all(
                 color: Get.isDarkMode ? Colors.white70 : Colors.black54,
               ),
@@ -67,7 +77,7 @@ class _CustomCounterState extends State<CustomCounter>
               alignment: Alignment.center,
               children: [
                 ClipRRect(
-                  borderRadius: BorderRadius.circular(15),
+                  borderRadius: BorderRadius.circular(14),
                   child: WaveWidget(
                     config: CustomConfig(
                       colors: [

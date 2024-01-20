@@ -1,16 +1,17 @@
 import 'dart:developer';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:quran/services/adkar_service.dart';
 import 'package:quran/services/theme_services.dart';
 import 'package:quran/ui/size_config.dart';
-import 'package:quran/ui/theme.dart';
 import 'package:quran/ui/widgets/custom_counter.dart';
 
 import 'package:quran/ui/widgets/custom_deker.dart';
 import 'package:quran/ui/widgets/custom_exit_button.dart';
+import 'package:rive/rive.dart';
 
 class AdkarScreen extends StatefulWidget {
   const AdkarScreen({super.key, required this.title});
@@ -103,13 +104,7 @@ class _AdkarScreenState extends State<AdkarScreen>
     }
   }
 
-  // void _showOverlayMessage(String message) {
-  //   // يمكنك هنا استخدام Overlay لعرض رسالة أو إجراء معين
-  //   // ...
-  //   log(message);
-  //   // إعادة تعيين عدد العناصر المختفية بمجرد عرض الرسالة
-  //   // disappearedCount = 0;
-  // }
+  SMIBool? test;
   bool isDarkMode = Get.isDarkMode;
   @override
   Widget build(BuildContext context) {
@@ -134,24 +129,24 @@ class _AdkarScreenState extends State<AdkarScreen>
       },
       child: Scaffold(
         appBar: AppBar(
-          title: Text(widget.title),
+          title: Text(
+            widget.title,
+            style: TextStyle(fontSize: getProportionateScreenWidth(15)),
+          ),
           actions: [
             Padding(
-              padding: const EdgeInsets.only(left: 15),
-              child: GestureDetector(
-                onTap: () {
-                  ThemeServices().switchThemeMode();
-                  setState(() {
-                    isDarkMode = !isDarkMode;
-                  });
-                },
-                child: Image.asset(
-                  isDarkMode ? 'assets/icons/sun.png' : 'assets/icons/moon.png',
-                  color: isDarkMode ? darkTextClr : Colors.black,
-                  height: getProportionateScreenWidth(25),
-                ),
-              ),
-            ),
+              padding: const EdgeInsets.only(left: 5.0),
+              child: IconButton(
+                  onPressed: () {
+                    ThemeServices().switchThemeMode();
+                    setState(() {
+                      isDarkMode = !isDarkMode;
+                    });
+                  },
+                  icon: Icon(isDarkMode
+                      ? CupertinoIcons.sun_max
+                      : Icons.dark_mode_outlined)),
+            )
           ],
         ),
         body: PageStorage(
@@ -170,39 +165,134 @@ class _AdkarScreenState extends State<AdkarScreen>
                         );
                       }),
                 )
-              : ListView(
-                  physics: const BouncingScrollPhysics(),
-                  children: [
-                    const SizedBox(
-                      height: 30,
-                    ),
-                    CustomCounter(
-                      title: 'عدد الأذكار التي قرأتها',
-                      targetValue: count,
-                    ),
-                    CustomCounter(
-                      title: 'مجموع الأذكار          ',
-                      targetValue: totalAdkar,
-                    ),
-                    Visibility(
-                      visible: showExit,
-                      child: const CustomExitButton(),
+              : 1 == 2
+                  ? Column(
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            // test!.change(true);
+                          },
+                          child: Column(
+                            children: [
+                              SizedBox(
+                                height: getProportionateScreenWidth(100),
+                                width: getProportionateScreenWidth(100),
+                                child: RiveAnimation.asset(
+                                  'assets/icons/aaa.riv',
+                                  artboard: 'Tada',
+                                  onInit: (artboard) {
+                                    StateMachineController? controller =
+                                        StateMachineController.fromArtboard(
+                                            artboard, 'controller');
+                                    artboard.addController(controller!);
+
+                                    test = controller.findInput('isHover')
+                                        as SMIBool?;
+                                  },
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              const Text(
+                                'أحسنت 👏\nداوم على قراءة الأذكار',
+                                textAlign: TextAlign.center,
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        CustomCounter(
+                          title: 'عدد الأذكار التي قرأتها',
+                          targetValue: count,
+                        ),
+                        CustomCounter(
+                          title: 'مجموع الأذكار          ',
+                          targetValue: totalAdkar,
+                        ),
+                        const Spacer(),
+                        Visibility(
+                          visible: showExit,
+                          child: const CustomExitButton(),
+                        ),
+                        const Spacer(
+                          flex: 2,
+                        ),
+                      ],
                     )
-                  ],
-                ),
+                  : Column(
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            // test!.change(true);
+                          },
+                          child: Column(
+                            children: [
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              AnimationLimiter(
+                                child: AnimationConfiguration.synchronized(
+                                  // duration: const Duration(seconds: 1),
+                                  child: ScaleAnimation(
+                                    curve: Curves.fastOutSlowIn,
+                                    duration:
+                                        const Duration(milliseconds: 1500),
+                                    child: SizedBox(
+                                      height: getProportionateScreenWidth(100),
+                                      width: getProportionateScreenWidth(100),
+                                      child: RiveAnimation.asset(
+                                        'assets/icons/aaa.riv',
+                                        artboard: 'Tada',
+                                        useArtboardSize: true,
+                                        onInit: (artboard) {
+                                          StateMachineController? controller =
+                                              StateMachineController
+                                                  .fromArtboard(
+                                                      artboard, 'controller');
+                                          artboard.addController(controller!);
+
+                                          test = controller.findInput('isHover')
+                                              as SMIBool?;
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              const Text(
+                                'أحسنت 👏\nداوم على قراءة الأذكار',
+                                textAlign: TextAlign.center,
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        CustomCounter(
+                          title: 'مجموع الأذكار          ',
+                          targetValue: totalAdkar,
+                        ),
+                        const Spacer(),
+                        Visibility(
+                          visible: showExit,
+                          child: const CustomExitButton(),
+                        ),
+                        const Spacer(
+                          flex: 2,
+                        ),
+                      ],
+                    ),
         ),
       ),
     );
   }
-  // @override
-  // void dispose() {
-  //   setState(() {
-  //     disposes = true;
-  //   });
-  //   Future.delayed(const Duration(seconds: 10), () {
-  //     super.dispose();
-  //   });
-  // }
 
   @override
   bool get wantKeepAlive => true;

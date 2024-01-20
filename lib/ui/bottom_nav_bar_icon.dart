@@ -92,7 +92,8 @@ class _BottonNavWithAnimatedIconsState
                         child: Image.asset(
                           iconInputs[index],
                           color: Colors.white,
-                          height: selectedNavIndex == index ? 35 : 30,
+                          height: selectedNavIndex == index ? 36 : 30,
+                          scale: selectedNavIndex == index ? 2.9 : 2,
                         ),
                       ),
                     ),

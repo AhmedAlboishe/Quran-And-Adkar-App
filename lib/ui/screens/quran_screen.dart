@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quran/ui/size_config.dart';
 
 class QuranScreen extends StatefulWidget {
   const QuranScreen({super.key});
@@ -12,9 +13,20 @@ class _QuranScreenState extends State<QuranScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('القرآن الكريم'),
+        title: Text(
+          'القرآن الكريم',
+          style: TextStyle(
+              fontSize: getProportionateScreenWidth(15),
+              fontWeight: FontWeight.w700),
+        ),
       ),
-      body: const Center(child: Text('قريباً')),
+      body: Center(
+          child: Text(
+        'قريباً',
+        style: TextStyle(
+            fontSize: getProportionateScreenWidth(15),
+            fontWeight: FontWeight.w700),
+      )),
     );
   }
 }

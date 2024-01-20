@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quran/services/theme_services.dart';
+import 'package:quran/ui/size_config.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -13,7 +14,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('الإعدادات'),
+        title: Text(
+          'الإعدادات',
+          style: TextStyle(
+              fontSize: getProportionateScreenWidth(15),
+              fontWeight: FontWeight.w700),
+        ),
       ),
       body: Column(
         children: [

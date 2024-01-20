@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:quran/ui/size_config.dart';
 import 'package:quran/ui/widgets/custom_container.dart';
 import 'package:quran/ui/widgets/custom_category.dart';
 import 'package:quran/ui/widgets/custom_praise.dart';
@@ -40,11 +41,14 @@ class _HomeScreenState extends State<HomeScreen>
   @override
   Widget build(BuildContext context) {
     super.build(context);
+    SizeConfig().init(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
+        title: Text(
           'تـدبَّـر',
-          style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
+          style: TextStyle(
+              fontSize: getProportionateScreenWidth(15),
+              fontWeight: FontWeight.w700),
         ),
       ),
       body: PageStorage(
@@ -66,10 +70,16 @@ class _HomeScreenState extends State<HomeScreen>
                 ),
               ],
             ),
-            const CustomContainer(
+            CustomContainer(
               title: 'آية من القرآن',
               subTitle:
                   '(وَمَن يَعْمَلْ سُوءًا أَوْ يَظْلِمْ نَفْسَهُ ثُمَّ يَسْتَغْفِرِ اللَّـهَ يَجِدِ اللَّـهَ غَفُورًا رَّحِيمًا)\n[سورة النساء، آية: 110]',
+              fontFamily: 'Uthmani',
+              fontSize: getProportionateScreenWidth(16),
+            ),
+            const CustomContainer(
+              title: 'يوم الجمعة',
+              subTitle: 'فضل قراءة سورة الكهف',
             ),
             const CustomPraise(
               titel: 'سبحان الله وبحمده، سبحان الله العظيم',

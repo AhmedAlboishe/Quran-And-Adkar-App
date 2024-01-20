@@ -102,7 +102,7 @@ class _CustomDekerState extends State<CustomDeker>
                                 deker,
                                 textAlign: TextAlign.center,
                                 style: const TextStyle(
-                                    height: 1.8, fontFamily: 'Rubik'),
+                                    height: 1.8, fontFamily: 'Parastoo'),
                               ),
                               Row(
                                 children: List.generate(times, (index) {

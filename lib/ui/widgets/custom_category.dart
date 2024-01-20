@@ -20,7 +20,6 @@ class _CustomCategoryState extends State<CustomCategory>
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-
     super.build(context);
     return Expanded(
       child: GestureDetector(
