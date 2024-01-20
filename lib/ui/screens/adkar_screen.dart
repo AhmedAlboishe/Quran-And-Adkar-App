@@ -11,7 +11,6 @@ import 'package:quran/ui/widgets/custom_counter.dart';
 
 import 'package:quran/ui/widgets/custom_deker.dart';
 import 'package:quran/ui/widgets/custom_exit_button.dart';
-import 'package:rive/rive.dart';
 
 class AdkarScreen extends StatefulWidget {
   const AdkarScreen({super.key, required this.title});
@@ -104,7 +103,6 @@ class _AdkarScreenState extends State<AdkarScreen>
     }
   }
 
-  SMIBool? test;
   bool isDarkMode = Get.isDarkMode;
   @override
   Widget build(BuildContext context) {
@@ -165,42 +163,9 @@ class _AdkarScreenState extends State<AdkarScreen>
                         );
                       }),
                 )
-              : 1 == 2
-                  ? Column(
+              : Column(
                       children: [
-                        GestureDetector(
-                          onTap: () {
-                            // test!.change(true);
-                          },
-                          child: Column(
-                            children: [
-                              SizedBox(
-                                height: getProportionateScreenWidth(100),
-                                width: getProportionateScreenWidth(100),
-                                child: RiveAnimation.asset(
-                                  'assets/icons/aaa.riv',
-                                  artboard: 'Tada',
-                                  onInit: (artboard) {
-                                    StateMachineController? controller =
-                                        StateMachineController.fromArtboard(
-                                            artboard, 'controller');
-                                    artboard.addController(controller!);
-
-                                    test = controller.findInput('isHover')
-                                        as SMIBool?;
-                                  },
-                                ),
-                              ),
-                              const SizedBox(
-                                height: 20,
-                              ),
-                              const Text(
-                                'أحسنت 👏\nداوم على قراءة الأذكار',
-                                textAlign: TextAlign.center,
-                              ),
-                            ],
-                          ),
-                        ),
+                      
                         const SizedBox(
                           height: 30,
                         ),
@@ -222,73 +187,7 @@ class _AdkarScreenState extends State<AdkarScreen>
                         ),
                       ],
                     )
-                  : Column(
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            // test!.change(true);
-                          },
-                          child: Column(
-                            children: [
-                              const SizedBox(
-                                height: 20,
-                              ),
-                              AnimationLimiter(
-                                child: AnimationConfiguration.synchronized(
-                                  // duration: const Duration(seconds: 1),
-                                  child: ScaleAnimation(
-                                    curve: Curves.fastOutSlowIn,
-                                    duration:
-                                        const Duration(milliseconds: 1500),
-                                    child: SizedBox(
-                                      height: getProportionateScreenWidth(100),
-                                      width: getProportionateScreenWidth(100),
-                                      child: RiveAnimation.asset(
-                                        'assets/icons/aaa.riv',
-                                        artboard: 'Tada',
-                                        useArtboardSize: true,
-                                        onInit: (artboard) {
-                                          StateMachineController? controller =
-                                              StateMachineController
-                                                  .fromArtboard(
-                                                      artboard, 'controller');
-                                          artboard.addController(controller!);
-
-                                          test = controller.findInput('isHover')
-                                              as SMIBool?;
-                                        },
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              const SizedBox(
-                                height: 20,
-                              ),
-                              const Text(
-                                'أحسنت 👏\nداوم على قراءة الأذكار',
-                                textAlign: TextAlign.center,
-                              ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 30,
-                        ),
-                        CustomCounter(
-                          title: 'مجموع الأذكار          ',
-                          targetValue: totalAdkar,
-                        ),
-                        const Spacer(),
-                        Visibility(
-                          visible: showExit,
-                          child: const CustomExitButton(),
-                        ),
-                        const Spacer(
-                          flex: 2,
-                        ),
-                      ],
-                    ),
+                
         ),
       ),
     );
