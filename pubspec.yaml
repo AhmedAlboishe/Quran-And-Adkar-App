@@ -116,6 +116,9 @@ flutter:
     - family: Uthmani
       fonts: 
         - asset: fonts/UthmanicQaloun V21.ttf
+    - family: Amiri
+      fonts: 
+        - asset: fonts/Amiri-Regular.ttf
 
         # fonts\AllahNames99-0Wav4.ttf pupr
         

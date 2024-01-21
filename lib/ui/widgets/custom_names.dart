@@ -10,11 +10,10 @@ class CustomNames extends StatelessWidget {
     super.key,
     required this.data,
   });
-  final String data;
+  final Map data;
   @override
   Widget build(BuildContext context) {
-    String name = data.split(':')[0];
-    String meaning = data.split(':')[1];
+    String meaning = data['meaning'].split(':')[1];
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
@@ -47,9 +46,9 @@ class CustomNames extends StatelessWidget {
                 height: 20,
               ),
               Transform.scale(
-                scale: 4,
+                scale: data['name'] == '[' ? 6 : 4,
                 child: Text(
-                  name,
+                  data['name'],
                   // textAlign: TextAlign.left,
                   style: TextStyle(
                     fontFamily:
@@ -63,6 +62,7 @@ class CustomNames extends StatelessWidget {
               Text(
                 meaning,
                 textAlign: TextAlign.center,
+                style: const TextStyle(fontFamily: 'Parastoo'),
               ),
               const SizedBox(
                 height: 20,
@@ -72,7 +72,7 @@ class CustomNames extends StatelessWidget {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      Clipboard.setData(ClipboardData(text: meaning));
+                      Clipboard.setData(ClipboardData(text: data['meaning']));
                       Fluttertoast.showToast(msg: 'تم النسخ');
                     },
                     child: Image.asset(
@@ -89,7 +89,7 @@ class CustomNames extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Share.share(meaning);
+                      Share.share(data['meaning']);
                     },
                     child: Image.asset(
                       'assets/icons/share-2.png',

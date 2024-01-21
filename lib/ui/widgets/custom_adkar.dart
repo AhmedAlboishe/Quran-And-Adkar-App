@@ -22,37 +22,43 @@ class _CustomAdkarState extends State<CustomAdkar>
   Widget build(BuildContext context) {
     SizeConfig().init(context);
 
-    return InkWell(
-      onTap: () async {
-        await Get.to(() => AdkarScreen(title: widget.title));
-        widget.onBack();
-      },
-      borderRadius: BorderRadius.circular(15),
-      child: Container(
-        height: getProportionateScreenWidth(75),
-        decoration: BoxDecoration(
-          color: context.theme.colorScheme.background,
-          boxShadow: [
-            BoxShadow(
-              color: Get.isDarkMode
-                  ? const Color(0x2F646464)
-                  : const Color(0x29000000),
-              offset: const Offset(1, 4),
-              blurRadius: 5,
-            )
-          ],
-          border: Border.all(
-            color: Get.isDarkMode ? Colors.white30 : Colors.black26,
+    return Padding(
+      padding: const EdgeInsets.only(left: 15, right: 15, top: 15),
+      child: InkWell(
+        onTap: () async {
+          await Get.to(
+            () => AdkarScreen(title: widget.title),
+            transition: Transition.fade,
+          );
+          widget.onBack();
+        },
+        borderRadius: BorderRadius.circular(15),
+        child: Container(
+          height: getProportionateScreenWidth(75),
+          decoration: BoxDecoration(
+            color: context.theme.colorScheme.background,
+            boxShadow: [
+              BoxShadow(
+                color: Get.isDarkMode
+                    ? const Color(0x2F646464)
+                    : const Color(0x29000000),
+                offset: const Offset(1, 4),
+                blurRadius: 5,
+              )
+            ],
+            border: Border.all(
+              color: context.theme.colorScheme.onSecondary.withOpacity(0.5),
+            ),
+            borderRadius: BorderRadius.circular(15),
           ),
-          borderRadius: BorderRadius.circular(15),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15),
-          child: Align(
-            alignment: Alignment.centerRight,
-            child: Text(
-              widget.title,
-              style: TextStyle(fontSize: getProportionateScreenWidth(13)),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            child: Align(
+              alignment: Alignment.centerRight,
+              child: Text(
+                widget.title,
+                style: TextStyle(fontSize: getProportionateScreenWidth(13)),
+              ),
             ),
           ),
         ),

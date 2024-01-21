@@ -49,7 +49,7 @@ class _CustomDekerState extends State<CustomDeker>
             child: count < times - 1
                 ? Padding(
                     padding:
-                        const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                        const EdgeInsets.symmetric(horizontal: 15, vertical: 7),
                     child: PhysicalModel(
                       color: context.theme.colorScheme.background,
                       shadowColor: Get.isDarkMode
@@ -104,33 +104,49 @@ class _CustomDekerState extends State<CustomDeker>
                                 style: const TextStyle(
                                     height: 1.8, fontFamily: 'Parastoo'),
                               ),
-                              Row(
-                                children: List.generate(times, (index) {
-                                  return Expanded(
-                                    child: AnimatedContainer(
-                                      curve: Curves
-                                          .fastLinearToSlowEaseIn, //fastOutSlowIn,
-                                      duration:
-                                          const Duration(milliseconds: 800),
-                                      margin: EdgeInsets.only(
-                                          left: times <= 3 ? 8 : 5,
-                                          right: times <= 3 ? 8 : 5,
-                                          top: 20,
-                                          bottom: 15),
-                                      height: 10,
+                              times < 7
+                                  ? Row(
+                                      children: List.generate(times, (index) {
+                                        return Expanded(
+                                          child: AnimatedContainer(
+                                            curve: Curves
+                                                .fastLinearToSlowEaseIn, //fastOutSlowIn,
+                                            duration: const Duration(
+                                                milliseconds: 800),
+                                            margin: EdgeInsets.only(
+                                                left: times <= 3 ? 8 : 5,
+                                                right: times <= 3 ? 8 : 5,
+                                                top: 20,
+                                                bottom: 15),
+                                            height: 10,
+                                            decoration: BoxDecoration(
+                                              color: count >= index
+                                                  ? context.theme.colorScheme
+                                                      .onSecondary
+                                                  : context.theme.colorScheme
+                                                      .onSecondary
+                                                      .withOpacity(0.3),
+                                              borderRadius:
+                                                  BorderRadius.circular(15),
+                                            ),
+                                          ),
+                                        );
+                                      }),
+                                    )
+                                  : Container(
+                                      margin: const EdgeInsets.only(
+                                          top: 10, bottom: 10),
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 10, vertical: 2),
                                       decoration: BoxDecoration(
-                                        color: count >= index
-                                            ? context
-                                                .theme.colorScheme.onSecondary
-                                            : context
-                                                .theme.colorScheme.onSecondary
-                                                .withOpacity(0.3),
-                                        borderRadius: BorderRadius.circular(15),
+                                        borderRadius: BorderRadius.circular(50),
+                                        border: Border.all(
+                                          color: context
+                                              .theme.colorScheme.onSecondary,
+                                        ),
                                       ),
-                                    ),
-                                  );
-                                }),
-                              )
+                                      child: Text(
+                                          'عدد التكرار: ${count == -1 ? times : count == 0 ? times - 1 : times - count - 1}'))
                             ],
                           ),
                         ),

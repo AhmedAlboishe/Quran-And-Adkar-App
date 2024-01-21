@@ -32,6 +32,7 @@ class _AllAdkarScreenState extends State<AllAdkarScreen> {
     SizeConfig().init(context);
     return Scaffold(
       appBar: AppBar(
+        scrolledUnderElevation: 0,
         elevation: 0,
         backgroundColor: context.theme.colorScheme.onSecondary.withOpacity(0.1),
         title: Text(
@@ -42,30 +43,35 @@ class _AllAdkarScreenState extends State<AllAdkarScreen> {
         ),
       ),
       body: Column(
-        // mainAxisSize: MainAxisSize.min,
         children: [
           TotalAdkar(
             targetValue: totalAdkar,
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 15, right: 15, top: 15),
-            child: CustomAdkar(
-              title: 'أذكار الصباح',
-              onBack: getTotal,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 15, right: 15, top: 15),
-            child: CustomAdkar(
-              title: 'أذكار المساء',
-              onBack: getTotal,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 15, right: 15, top: 15),
-            child: CustomAdkar(
-              title: 'أذكار النوم',
-              onBack: getTotal,
+          Expanded(
+            child: ListView(
+              physics: const BouncingScrollPhysics(),
+              // mainAxisSize: MainAxisSize.min,
+              children: [
+                CustomAdkar(
+                  title: 'أذكار الإستيقاظ',
+                  onBack: getTotal,
+                ),
+                CustomAdkar(
+                  title: 'أذكار الصباح',
+                  onBack: getTotal,
+                ),
+                CustomAdkar(
+                  title: 'أذكار المساء',
+                  onBack: getTotal,
+                ),
+                CustomAdkar(
+                  title: 'أذكار النوم',
+                  onBack: getTotal,
+                ),
+                const SizedBox(
+                  height: 10,
+                )
+              ],
             ),
           ),
         ],

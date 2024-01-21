@@ -63,6 +63,7 @@ class _CustomPraiseState extends State<CustomPraise>
                 Text(
                   widget.titel,
                   textAlign: TextAlign.center,
+                  style: const TextStyle(fontFamily: 'Parastoo'),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),

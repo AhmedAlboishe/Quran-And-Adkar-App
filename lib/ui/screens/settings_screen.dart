@@ -36,6 +36,19 @@ class _SettingsScreenState extends State<SettingsScreen> {
               ThemeServices().switchThemeMode();
               setState(() {});
             },
+          ),
+          const ListTile(
+            title: Text('الإصدار 1.0.0 (تجريبي)'),
+          ),
+          const Spacer(),
+          const Opacity(
+              opacity: 0.5,
+              child: Text(
+                'تم تصميمه وتطويره من قِبل\nأحمد البوعيشي',
+                textAlign: TextAlign.center,
+              )),
+          const SizedBox(
+            height: 90,
           )
         ],
       ),

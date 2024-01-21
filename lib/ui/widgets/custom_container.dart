@@ -11,13 +11,15 @@ class CustomContainer extends StatelessWidget {
     super.key,
     required this.subTitle,
     required this.title,
-    this.fontFamily = 'Ibmp',
+    this.fontFamily = 'Parastoo',
     this.fontSize,
+    this.textHight,
   });
   final String subTitle;
   final String title;
   final String fontFamily;
   final double? fontSize;
+  final double? textHight;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -53,7 +55,11 @@ class CustomContainer extends StatelessWidget {
               Text(
                 subTitle,
                 textAlign: TextAlign.center,
-                style: TextStyle(fontFamily: fontFamily, fontSize: fontSize),
+                style: TextStyle(
+                  fontFamily: fontFamily,
+                  fontSize: fontSize,
+                  height: textHight,
+                ),
               ),
               const SizedBox(
                 height: 20,

@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
+import 'package:quran/model/data_model.dart';
 import 'package:quran/services/adkar_service.dart';
 import 'package:quran/services/theme_services.dart';
 import 'package:quran/ui/size_config.dart';
@@ -21,53 +22,7 @@ class AdkarScreen extends StatefulWidget {
 
 class _AdkarScreenState extends State<AdkarScreen>
     with AutomaticKeepAliveClientMixin {
-  List adkar = [
-    {
-      'deker':
-          'أَعُوذُ بِاللهِ مِنْ الشَّيْطَانِ الرَّجِيم\nاللّهُ لاَ إِلَـهَ إِلاَّ هُوَ الْحَيُّ الْقَيُّومُ لاَ تَأْخُذُهُ سِنَةٌ وَلاَ نَوْمٌ لَّهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الأَرْضِ مَن ذَا الَّذِي يَشْفَعُ عِنْدَهُ إِلاَّ بِإِذْنِهِ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ وَلاَ يُحِيطُونَ بِشَيْءٍ مِّنْ عِلْمِهِ إِلاَّ بِمَا شَاء وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالأَرْضَ وَلاَ يَؤُودُهُ حِفْظُهُمَا وَهُوَ الْعَلِيُّ الْعَظِيمُ',
-      'times': 1
-    },
-    {
-      'deker':
-          'بِسْمِ اللهِ الرَّحْمنِ الرَّحِيم\nقُلْ هُوَ ٱللَّهُ أَحَدٌ، ٱللَّهُ ٱلصَّمَدُ، لَمْ يَلِدْ وَلَمْ يُولَدْ، وَلَمْ يَكُن لَّهُۥ كُفُوًا أَحَدٌۢ',
-      'times': 3
-    },
-    {
-      'deker':
-          'بِسْمِ اللهِ الرَّحْمنِ الرَّحِيم\nقُلْ أَعُوذُ بِرَبِّ ٱلْفَلَقِ، مِن شَرِّ مَا خَلَقَ، وَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ، وَمِن شَرِّ ٱلنَّفَّٰثَٰتِ فِى ٱلْعُقَدِ، وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ',
-      'times': 3
-    },
-    {
-      'deker':
-          'بِسْمِ اللهِ الرَّحْمنِ الرَّحِيم\nقُلْ أَعُوذُ بِرَبِّ ٱلنَّاسِ، مَلِكِ ٱلنَّاسِ، إِلَٰهِ ٱلنَّاسِ، مِن شَرِّ ٱلْوَسْوَاسِ ٱلْخَنَّاسِ، ٱلَّذِى يُوَسْوِسُ فِى صُدُورِ ٱلنَّاسِ، مِنَ ٱلْجِنَّةِ وَٱلنَّاسِ',
-      'times': 3
-    },
-    {
-      'deker':
-          'أَصْـبَحْنا وَأَصْـبَحَ المُـلْكُ لله وَالحَمدُ لله ، لا إلهَ إلاّ اللّهُ وَحدَهُ لا شَريكَ لهُ، لهُ المُـلكُ ولهُ الحَمْـد، وهُوَ على كلّ شَيءٍ قدير ، رَبِّ أسْـأَلُـكَ خَـيرَ ما في هـذا اليوم وَخَـيرَ ما بَعْـدَه ، وَأَعـوذُ بِكَ مِنْ شَـرِّ ما في هـذا اليوم وَشَرِّ ما بَعْـدَه، رَبِّ أَعـوذُبِكَ مِنَ الْكَسَـلِ وَسـوءِ الْكِـبَر ، رَبِّ أَعـوذُ بِكَ مِنْ عَـذابٍ في النّـارِ وَعَـذابٍ في القَـبْر',
-      'times': 1
-    },
-    {
-      'deker':
-          'اللّهـمَّ أَنْتَ رَبِّـي لا إلهَ إلاّ أَنْتَ ، خَلَقْتَنـي وَأَنا عَبْـدُك ، وَأَنا عَلـى عَهْـدِكَ وَوَعْـدِكَ ما اسْتَـطَعْـت ، أَعـوذُبِكَ مِنْ شَـرِّ ما صَنَـعْت ، أَبـوءُ لَـكَ بِنِعْـمَتِـكَ عَلَـيَّ وَأَبـوءُ بِذَنْـبي فَاغْفـِرْ لي فَإِنَّـهُ لا يَغْـفِرُ الذُّنـوبَ إِلاّ أَنْتَ',
-      'times': 1
-    },
-    {
-      'deker':
-          'رَضيـتُ بِاللهِ رَبَّـاً وَبِالإسْلامِ ديـناً وَبِمُحَـمَّدٍ صلى الله عليه وسلم نَبِيّـاً',
-      'times': 3
-    },
-    {
-      'deker':
-          'اللّهُـمَّ إِنِّـي أَصْبَـحْتُ أُشْـهِدُك ، وَأُشْـهِدُ حَمَلَـةَ عَـرْشِـك ، وَمَلَائِكَتَكَ ، وَجَمـيعَ خَلْـقِك ، أَنَّـكَ أَنْـتَ اللهُ لا إلهَ إلاّ أَنْـتَ وَحْـدَكَ لا شَريكَ لَـك ، وَأَنَّ ُ مُحَمّـداً عَبْـدُكَ وَرَسـولُـك',
-      'times': 4
-    },
-    {
-      'deker':
-          'اللّهُـمَّ ما أَصْبَـَحَ بي مِـنْ نِعْـمَةٍ أَو بِأَحَـدٍ مِـنْ خَلْـقِك ، فَمِـنْكَ وَحْـدَكَ لا شريكَ لَـك ، فَلَـكَ الْحَمْـدُ وَلَـكَ الشُّكْـر',
-      'times': 1
-    },
-  ];
+  List adkar = [];
   int count = 0;
   final adkarServices = AdkarServices();
   bool disposes = false;
@@ -82,6 +37,7 @@ class _AdkarScreenState extends State<AdkarScreen>
   @override
   void initState() {
     totalAdkar = adkarServices.loadTotalAdkarFromStorage();
+    adkar = DataModel.getAdkar(widget.title);
     super.initState();
   }
 
@@ -148,47 +104,42 @@ class _AdkarScreenState extends State<AdkarScreen>
           ],
         ),
         body: PageStorage(
-          bucket: PageStorageBucket(),
-          child: disappearedCount != adkar.length && disposes == false
-              ? AnimationLimiter(
-                  child: ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: adkar.length,
-                      physics: const BouncingScrollPhysics(),
-                      itemBuilder: (context, index) {
-                        return CustomDeker(
-                          data: adkar[index],
-                          onTapCount: _countOnTap,
-                          onDisappear: _onDekerDisappear,
-                        );
-                      }),
-                )
-              : Column(
-                      children: [
-                      
-                        const SizedBox(
-                          height: 30,
-                        ),
-                        CustomCounter(
-                          title: 'عدد الأذكار التي قرأتها',
-                          targetValue: count,
-                        ),
-                        CustomCounter(
-                          title: 'مجموع الأذكار          ',
-                          targetValue: totalAdkar,
-                        ),
-                        const Spacer(),
-                        Visibility(
-                          visible: showExit,
-                          child: const CustomExitButton(),
-                        ),
-                        const Spacer(
-                          flex: 2,
-                        ),
-                      ],
-                    )
-                
-        ),
+            bucket: PageStorageBucket(),
+            child: disappearedCount != adkar.length && disposes == false
+                ? AnimationLimiter(
+                    child: ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: adkar.length,
+                        physics: const BouncingScrollPhysics(),
+                        itemBuilder: (context, index) {
+                          return CustomDeker(
+                            data: adkar[index],
+                            onTapCount: _countOnTap,
+                            onDisappear: _onDekerDisappear,
+                          );
+                        }),
+                  )
+                : Column(
+                    children: [
+                      const SizedBox(
+                        height: 30,
+                      ),
+                      CustomCounter(
+                        title: 'عدد الأذكار التي قرأتها',
+                        targetValue: count,
+                      ),
+                      CustomCounter(
+                        title: 'مجموع الأذكار          ',
+                        targetValue: totalAdkar,
+                      ),
+                      const Spacer(),
+                      Visibility(
+                        visible: showExit,
+                        child: const CustomExitButton(),
+                      ),
+                      const Spacer(),
+                    ],
+                  )),
       ),
     );
   }
