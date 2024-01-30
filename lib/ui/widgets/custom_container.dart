@@ -70,7 +70,9 @@ class CustomContainer extends StatelessWidget {
                   GestureDetector(
                     onTap: () {
                       Clipboard.setData(ClipboardData(text: subTitle));
-                      Fluttertoast.showToast(msg: 'تم النسخ');
+                      Fluttertoast.showToast(
+                          msg: 'تم النسخ',
+                          backgroundColor: const Color(0xFF616161));
                     },
                     child: Image.asset(
                       'assets/icons/clipboard.png',

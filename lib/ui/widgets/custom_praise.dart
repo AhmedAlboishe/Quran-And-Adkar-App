@@ -94,7 +94,9 @@ class _CustomPraiseState extends State<CustomPraise>
                     GestureDetector(
                       onTap: () {
                         Clipboard.setData(ClipboardData(text: widget.titel));
-                        Fluttertoast.showToast(msg: 'تم النسخ');
+                        Fluttertoast.showToast(
+                            msg: 'تم النسخ',
+                            backgroundColor: const Color(0xFF616161));
                       },
                       child: Image.asset(
                         'assets/icons/clipboard.png',

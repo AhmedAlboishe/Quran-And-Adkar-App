@@ -73,7 +73,7 @@ class CustomNames extends StatelessWidget {
                   GestureDetector(
                     onTap: () {
                       Clipboard.setData(ClipboardData(text: data['meaning']));
-                      Fluttertoast.showToast(msg: 'تم النسخ');
+                      Fluttertoast.showToast(msg: 'تم النسخ',backgroundColor: const Color(0xFF616161));
                     },
                     child: Image.asset(
                       'assets/icons/clipboard.png',

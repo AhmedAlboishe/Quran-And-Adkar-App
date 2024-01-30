@@ -43,6 +43,8 @@ dependencies:
   fluttertoast: ^8.2.4
   hijri: ^3.0.0
   wave: ^0.2.2
+  sqflite: ^2.3.2
+  path: ^1.8.3
 
   
 dev_dependencies:
@@ -83,6 +85,7 @@ flutter:
     - assets/images/
     - assets/icons/
     - shorebird.yaml
+    - assets/data/tadabrApp.db
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

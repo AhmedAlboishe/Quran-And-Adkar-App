@@ -29,50 +29,47 @@ class _CustomCategoryState extends State<CustomCategory>
             transition: Transition.fade,
           );
         },
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-          child: PhysicalModel(
-            color: context.theme.colorScheme.background,
-            shadowColor: Get.isDarkMode
-                ? const Color.fromARGB(255, 100, 100, 100)
-                : const Color(0xFF000000),
-            elevation: 4,
-            borderRadius: BorderRadius.circular(15),
-            child: Container(
-              height: getProportionateScreenWidth(65),
-              // padding: const EdgeInsets.symmetric(vertical: 20),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-              ),
-              child: Stack(
-                alignment: Alignment.center,
-                fit: StackFit.expand,
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(15),
-                    child: Opacity(
-                      opacity: 0.7,
-                      child: Image.asset(
-                        widget.asset,
-                        fit: BoxFit.fill,
-                        // opacity: ,
-                      ),
+        child: PhysicalModel(
+          color: context.theme.colorScheme.background,
+          shadowColor: Get.isDarkMode
+              ? const Color.fromARGB(255, 100, 100, 100)
+              : const Color(0xFF000000),
+          elevation: 4,
+          borderRadius: BorderRadius.circular(15),
+          child: Container(
+            height: getProportionateScreenWidth(65),
+            // padding: const EdgeInsets.symmetric(vertical: 20),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
+            ),
+            child: Stack(
+              alignment: Alignment.center,
+              fit: StackFit.expand,
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(15),
+                  child: Opacity(
+                    opacity: 0.7,
+                    child: Image.asset(
+                      widget.asset,
+                      fit: BoxFit.fill,
+                      // opacity: ,
                     ),
                   ),
-                  Center(
-                    child: Text(
-                      widget.title,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: getProportionateScreenWidth(13),
-                        color: Colors.white,
-                        shadows: const [BoxShadow(offset: Offset(0, 1))],
-                      ),
+                ),
+                Center(
+                  child: Text(
+                    widget.title,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: getProportionateScreenWidth(13),
+                      color: Colors.white,
+                      shadows: const [BoxShadow(offset: Offset(0, 1))],
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),

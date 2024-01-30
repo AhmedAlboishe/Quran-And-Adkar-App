@@ -44,7 +44,7 @@ class _HomeScreenState extends State<HomeScreen>
     duaa = dataModel.getDuaa();
     tasbih = dataModel.getTasbih();
     ayaa = dataModel.getAyaa();
-    names=dataModel.getNames();
+    names = dataModel.getNames();
     super.initState();
   }
 
@@ -67,18 +67,24 @@ class _HomeScreenState extends State<HomeScreen>
           physics: const BouncingScrollPhysics(),
           children: [
             const CustomDetails(),
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                CustomCategory(
-                  title: 'أذكار الصباح',
-                  asset: 'assets/images/sunrise.jpg',
-                ),
-                CustomCategory(
-                  title: 'أذكار المساء',
-                  asset: 'assets/images/sunset.jpg',
-                ),
-              ],
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  CustomCategory(
+                    title: 'أذكار الصباح',
+                    asset: 'assets/images/sunrise.jpg',
+                  ),
+                  SizedBox(
+                    width: 15,
+                  ),
+                  CustomCategory(
+                    title: 'أذكار المساء',
+                    asset: 'assets/images/sunset.jpg',
+                  ),
+                ],
+              ),
             ),
             CustomContainer(
               title: 'آية من القرآن',
@@ -97,7 +103,7 @@ class _HomeScreenState extends State<HomeScreen>
             CustomPraise(
               titel: tasbih,
             ),
-             CustomNames(data: names),
+            CustomNames(data: names),
             CustomContainer(
               title: 'دعاء',
               subTitle: duaa,
