@@ -81,9 +81,9 @@ class _CustomCounterState extends State<CustomCounter>
                   child: WaveWidget(
                     config: CustomConfig(
                       colors: [
-                        context.theme.colorScheme.onSecondary.withOpacity(0.1),
-                        context.theme.colorScheme.onSecondary.withOpacity(0.1),
-                        context.theme.colorScheme.onSecondary.withOpacity(0.1),
+                        context.theme.colorScheme.onSecondary.withOpacity(0.2),
+                        context.theme.colorScheme.onSecondary.withOpacity(0.2),
+                        context.theme.colorScheme.onSecondary.withOpacity(0.2),
                       ],
                       durations: [9000, 8000, 7000],
                       heightPercentages: [

@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:quran/model/adkar_model.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
@@ -46,12 +47,12 @@ class DataClient {
     }
   }
 
-  Future<List<Map<String, dynamic>>> query(
+  Future<List<Adkar>> query(
       {required String tableName, String? where, List? whereArgs}) async {
     debugPrint('query function called');
     Database? db = await database;
-
-    return await db!.query(tableName, where: where, whereArgs: whereArgs);
+    var data = await db!.query(tableName, where: where, whereArgs: whereArgs);
+    return data.map((e) => Adkar.fromJson(e)).toList();
   }
 
   Future<int> insert(String tableName, Map<String, dynamic> values) async {

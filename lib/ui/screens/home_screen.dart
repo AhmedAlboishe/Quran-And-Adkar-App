@@ -89,8 +89,8 @@ class _HomeScreenState extends State<HomeScreen>
             CustomContainer(
               title: 'آية من القرآن',
               subTitle: ayaa,
-              fontFamily: 'Amiri',
-              fontSize: getProportionateScreenWidth(14),
+              fontFamily: 'uthmani',
+              fontSize: getProportionateScreenWidth(15),
               textHight: 2,
             ),
             DateTime.now().weekday == 5

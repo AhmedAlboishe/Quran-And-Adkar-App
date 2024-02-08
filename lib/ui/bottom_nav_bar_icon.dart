@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:quran/ui/screens/all_adkar_screen.dart';
 import 'package:quran/ui/screens/home_screen.dart';
 import 'package:quran/ui/screens/quran_screen.dart';
 import 'package:quran/ui/screens/settings_screen.dart';
+import 'package:quran/ui/theme.dart';
 
 const Color bottonNavBgColor = Color(0xff17203A);
 
@@ -57,12 +59,16 @@ class _BottonNavWithAnimatedIconsState
         margin: const EdgeInsets.only(left: 24, right: 24, bottom: 15),
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
-          color: bottonNavBgColor.withOpacity(0.8),
+          color: context.theme.colorScheme.background,
           borderRadius: BorderRadius.circular(24),
+          border: Border.all(
+              color: Get.isDarkMode
+                  ? white.withOpacity(0.15)
+                  : black.withOpacity(0.15)),
           boxShadow: [
             BoxShadow(
-                color: bottonNavBgColor.withOpacity(0.3),
-                offset: const Offset(0, 20),
+                color: context.theme.colorScheme.onSurface.withOpacity(0.05),
+                offset: const Offset(0, 5),
                 blurRadius: 20)
           ],
         ),
@@ -91,7 +97,7 @@ class _BottonNavWithAnimatedIconsState
                         opacity: selectedNavIndex == index ? 1 : 0.5,
                         child: Image.asset(
                           iconInputs[index],
-                          color: Colors.white,
+                          color: context.theme.colorScheme.onSurface,
                           height: selectedNavIndex == index ? 36 : 30,
                           scale: selectedNavIndex == index ? 2.9 : 2,
                         ),
@@ -104,6 +110,58 @@ class _BottonNavWithAnimatedIconsState
           ),
         ),
       ),
+      // bottomNavigationBar: Container(
+      //   // margin: const EdgeInsets.only(left: 24, right: 24, bottom: 15),
+      //   padding: const EdgeInsets.all(12),
+      //   decoration: BoxDecoration(
+      //     // color: Colors.white,
+      //     color: context.theme.colorScheme.background,
+      //     border: Border(
+      //       top: BorderSide(
+      //           color: Get.isDarkMode
+      //               ? white.withOpacity(0.15)
+      //               : black.withOpacity(0.15)),
+      //     ),
+      //     // borderRadius: BorderRadius.circular(24),
+      //   ),
+      //   child: Row(
+      //     mainAxisAlignment: MainAxisAlignment.spaceAround,
+      //     children: List.generate(
+      //       4,
+      //       (index) {
+      //         return GestureDetector(
+      //           onTap: () {
+      //             setState(() {
+      //               selectedNavIndex = index;
+      //             });
+      //             controller.jumpToPage(index);
+      //           },
+      //           child: Column(
+      //             mainAxisSize: MainAxisSize.min,
+      //             children: [
+      //               AnimatedBar(
+      //                 isActive: selectedNavIndex == index,
+      //               ),
+      //               SizedBox(
+      //                 // height: 36,
+      //                 width: 42,
+      //                 child: Opacity(
+      //                   opacity: selectedNavIndex == index ? 1 : 0.5,
+      //                   child: Image.asset(
+      //                     iconInputs[index],
+      //                     color: context.theme.colorScheme.onSurface,
+      //                     height: selectedNavIndex == index ? 36 : 30,
+      //                     scale: selectedNavIndex == index ? 2.9 : 2,
+      //                   ),
+      //                 ),
+      //               ),
+      //             ],
+      //           ),
+      //         );
+      //       },
+      //     ),
+      //   ),
+      // ),
     );
   }
 }
@@ -122,7 +180,7 @@ class AnimatedBar extends StatelessWidget {
       duration: const Duration(milliseconds: 200),
       margin: const EdgeInsets.only(bottom: 2),
       decoration: BoxDecoration(
-        color: const Color(0xff81b4ff),
+        color: context.theme.colorScheme.onSecondary,
         borderRadius: BorderRadius.circular(12),
       ),
     );

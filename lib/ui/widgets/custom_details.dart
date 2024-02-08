@@ -29,15 +29,17 @@ class CustomDetails extends StatelessWidget {
           height: getProportionateScreenWidth(140),
           padding: const EdgeInsets.only(right: 10, left: 0, bottom: 0, top: 5),
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
-              border: Border.all(
-                color: Get.isDarkMode ? Colors.white24 : Colors.black26,
-              ),
-              gradient: LinearGradient(colors: [
-                context.theme.colorScheme.onSecondary.withOpacity(0.5),
-                context.theme.colorScheme.onSecondary.withOpacity(0.3),
-                context.theme.colorScheme.onSecondary.withOpacity(0.2),
-              ])),
+            borderRadius: BorderRadius.circular(15),
+            border: Border.all(
+              color: Get.isDarkMode ? Colors.white24 : Colors.black26,
+            ),
+            color: context.theme.colorScheme.onSecondary.withOpacity(0.1),
+            // gradient: LinearGradient(colors: [
+            //   context.theme.colorScheme.onSecondary.withOpacity(0.5),
+            //   context.theme.colorScheme.onSecondary.withOpacity(0.3),
+            //   context.theme.colorScheme.onSecondary.withOpacity(0.2),
+            // ]),
+          ),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

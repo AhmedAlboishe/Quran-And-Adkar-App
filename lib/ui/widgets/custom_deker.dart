@@ -5,19 +5,21 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:quran/helper/dialog_helper.dart';
+import 'package:quran/model/adkar_model.dart';
 import 'package:quran/services/data_client.dart';
 import 'package:vibration/vibration.dart';
 
 class CustomDeker extends StatefulWidget {
   const CustomDeker({
     super.key,
-    required this.data,
     required this.onDisappear,
     required this.onTapCount,
     this.edit = false,
     required this.onEditeDone,
+    required this.adkar,
   });
-  final Map data;
+  // final Map data;
+  final Adkar adkar;
   final Function onDisappear;
   final Function onTapCount;
   final Function onEditeDone;
@@ -38,17 +40,17 @@ class _CustomDekerState extends State<CustomDeker>
 
   Future onUpdate() async {
     var data = await _dataClient.query(
-        tableName: 'adkar', where: ' id = "${widget.data['id']}"');
-    dekerController.text = deker = data[0]['deker'];
-    repetition = data[0]['repetition'];
+        tableName: 'adkar', where: ' id = "${widget.adkar.id}"');
+    dekerController.text = deker = data[0].deker;
+    repetition = data[0].repetition;
     widget.onEditeDone();
     setState(() {});
   }
 
   @override
   void initState() {
-    dekerController.text = deker = widget.data['deker'];
-    repetition = widget.data['repetition'];
+    dekerController.text = deker = widget.adkar.deker;
+    repetition = widget.adkar.repetition;
     repetitionController.text = repetition.toString();
     super.initState();
   }
@@ -73,9 +75,11 @@ class _CustomDekerState extends State<CustomDeker>
                         const EdgeInsets.symmetric(horizontal: 15, vertical: 7),
                     child: PhysicalModel(
                       color: context.theme.colorScheme.background,
-                      shadowColor: Get.isDarkMode
-                          ? const Color.fromARGB(255, 100, 100, 100)
-                          : const Color(0xFF000000),
+                      // shadowColor: Get.isDarkMode
+                      //     ? const Color.fromARGB(255, 100, 100, 100)
+                      //     : const Color(0xFF000000),
+                      shadowColor: context.theme.colorScheme.onSecondary
+                          .withOpacity(0.5),
                       elevation: 4,
                       borderRadius: BorderRadius.circular(15),
                       child: GestureDetector(
@@ -93,7 +97,7 @@ class _CustomDekerState extends State<CustomDeker>
                         child: Container(
                           // height: 80,
                           padding: const EdgeInsets.only(
-                              right: 10, left: 10, bottom: 10),
+                              right: 15, left: 15, bottom: 10),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(15),
                             border: Border.all(
@@ -147,8 +151,11 @@ class _CustomDekerState extends State<CustomDeker>
                                   : Container(
                                       margin: const EdgeInsets.only(
                                           top: 10, bottom: 10),
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 10, vertical: 2),
+                                      padding: const EdgeInsets.only(
+                                          left: 10,
+                                          right: 10,
+                                          bottom: 1,
+                                          top: 3),
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(50),
                                         border: Border.all(
@@ -157,7 +164,10 @@ class _CustomDekerState extends State<CustomDeker>
                                         ),
                                       ),
                                       child: Text(
-                                          'التكرار: ${count == -1 ? repetition : count == 0 ? repetition - 1 : repetition - count - 1}')),
+                                        'التكرار: ${count == -1 ? repetition : count == 0 ? repetition - 1 : repetition - count - 1}',
+                                        style: const TextStyle(
+                                            fontFamily: 'Tajawal'),
+                                      )),
                               Visibility(
                                 visible: widget.edit,
                                 child: Row(
@@ -234,7 +244,7 @@ class _CustomDekerState extends State<CustomDeker>
                   'deker': dekerController.text,
                   'repetition': int.parse(repetitionController.text)
                 },
-                whereId: widget.data['id']);
+                whereId: widget.adkar.id);
             print('$response ***-------------');
             await onUpdate();
             Get.back();
@@ -269,7 +279,7 @@ class _CustomDekerState extends State<CustomDeker>
                 TextButton(
                   onPressed: () async {
                     int response =
-                        await _dataClient.delete('adkar', widget.data['id']);
+                        await _dataClient.delete('adkar', widget.adkar.id);
                     print('delete -->$response');
                     widget.onDisappear();
                     count = repetition - 1;

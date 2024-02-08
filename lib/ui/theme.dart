@@ -1,13 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+// const Color white = Colors.white;
+// const Color black = Colors.black;
+// const Color darkBackgroundClr = Color(0xFF121212);
+// const Color lightBackgroundClr = Color(0xff3451A1);
+// const Color darkTextClr = Color(0xFFE3E6E4);
+// const Color iconClr = Color(0xff6898e0);
+// const Color darkiconClr = Color(0xff1b69ff);
 const Color white = Colors.white;
 const Color black = Colors.black;
 const Color darkBackgroundClr = Color(0xFF121212);
-const Color lightBackgroundClr = Color(0xff3451A1);
+const Color lightBackgroundClr = Color(0xfffafafa);
 const Color darkTextClr = Color(0xFFE3E6E4);
-const Color iconClr = Color(0xff6898e0);
-const Color darkiconClr = Color(0xff1b69ff);
+const Color darkPrimaryClr = Color(0xFF43766C);
+const Color ligthPrimaryClr = Color(0xFF43766C);
+const Color iconClr = Color(0xFFB19470);
+const Color darkiconClr = Color(0xFF76453B);
 
 class Themes {
   static final light = ThemeData(
@@ -15,31 +24,33 @@ class Themes {
       primaryColor: lightBackgroundClr,
       colorScheme: const ColorScheme(
         brightness: Brightness.light,
-        primary: darkiconClr,
+        primary: ligthPrimaryClr,
         onPrimary: Colors.black,
-        secondary: darkiconClr,
-        onSecondary: darkiconClr,
+        secondary: ligthPrimaryClr,
+        onSecondary: ligthPrimaryClr,
         error: Colors.red,
         onError: Colors.red,
-        background: Color(0xfffafafa),
+        background: lightBackgroundClr,
         onBackground: black,
-        surface: Color(0xfffafafa),
+        surface: lightBackgroundClr,
         onSurface: black,
       ),
-      splashColor: darkiconClr.withOpacity(0.1),
+      iconButtonTheme: const IconButtonThemeData(
+          style: ButtonStyle(iconColor: MaterialStatePropertyAll(darkiconClr))),
+      splashColor: ligthPrimaryClr.withOpacity(0.2),
       hoverColor: Colors.transparent,
-      highlightColor: darkiconClr.withOpacity(0.1),
+      highlightColor: ligthPrimaryClr.withOpacity(0.2),
       fontFamily: 'Ibmp',
-      iconTheme: const IconThemeData(color: black));
+      iconTheme: const IconThemeData(color: darkiconClr));
   static final dark = ThemeData(
       useMaterial3: true,
       primaryColor: darkBackgroundClr,
       colorScheme: const ColorScheme(
         brightness: Brightness.dark,
-        primary: iconClr,
+        primary: darkPrimaryClr,
         onPrimary: Colors.white,
-        secondary: iconClr,
-        onSecondary: iconClr,
+        secondary: darkPrimaryClr,
+        onSecondary: darkPrimaryClr,
         error: Colors.red,
         onError: Colors.red,
         background: darkBackgroundClr,
@@ -47,11 +58,13 @@ class Themes {
         surface: darkBackgroundClr,
         onSurface: darkTextClr,
       ),
-      splashColor: iconClr.withOpacity(0.1),
+      iconButtonTheme: const IconButtonThemeData(
+          style: ButtonStyle(iconColor: MaterialStatePropertyAll(iconClr))),
+      splashColor: darkPrimaryClr.withOpacity(0.2),
       hoverColor: Colors.transparent,
-      highlightColor: iconClr.withOpacity(0.1),
+      highlightColor: darkPrimaryClr.withOpacity(0.2),
       fontFamily: 'Ibmp',
-      iconTheme: const IconThemeData(color: darkTextClr));
+      iconTheme: const IconThemeData(color: iconClr));
 }
 
 TextStyle get textStyle => TextStyle(

@@ -4,6 +4,7 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:quran/helper/dialog_helper.dart';
+import 'package:quran/model/adkar_model.dart';
 import 'package:quran/services/adkar_service.dart';
 import 'package:quran/services/data_client.dart';
 import 'package:quran/services/theme_services.dart';
@@ -23,9 +24,8 @@ class AdkarScreen extends StatefulWidget {
 class _AdkarScreenState extends State<AdkarScreen>
     with AutomaticKeepAliveClientMixin {
   // List in
-  List<dynamic> adkar = [];
+  List<Adkar> adkar = [];
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
-
   int count = 0;
   final adkarServices = AdkarServices();
   bool disposes = false;
@@ -130,7 +130,7 @@ class _AdkarScreenState extends State<AdkarScreen>
                             physics: const BouncingScrollPhysics(),
                             itemBuilder: (context, index) {
                               return CustomDeker(
-                                data: adkar[index],
+                                adkar: adkar[index],
                                 onTapCount: _countOnTap,
                                 onDisappear: _onDekerDisappear,
                                 edit: edit,
@@ -174,7 +174,7 @@ class _AdkarScreenState extends State<AdkarScreen>
           visible: disappearedCount != adkar.length && disposes == false,
           child: IconButton(
               onPressed: () {
-                edit = true;
+                edit = !edit;
                 setState(() {});
               },
               icon: const Icon(Icons.edit)),
