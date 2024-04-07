@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:quran/ui/screens/all_adkar_screen.dart';
-import 'package:quran/ui/screens/home_screen.dart';
-import 'package:quran/ui/screens/quran_screen.dart';
-import 'package:quran/ui/screens/settings_screen.dart';
+
 import 'package:quran/ui/theme.dart';
+
+import 'screens/adkar/all_adkar_screen.dart';
+import 'screens/home/home_screen.dart';
+import 'screens/quran/suras_screen.dart';
+import 'screens/settings/settings_screen.dart';
 
 const Color bottonNavBgColor = Color(0xff17203A);
 
@@ -26,7 +28,7 @@ class _BottonNavWithAnimatedIconsState
   int selectedNavIndex = 0;
   List<Widget> pages = [
     const HomeScreen(),
-    const QuranScreen(),
+     SurasScreen(),
     const AllAdkarScreen(),
     const SettingsScreen(),
   ];

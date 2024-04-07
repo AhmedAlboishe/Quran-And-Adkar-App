@@ -15,42 +15,51 @@ const Color lightBackgroundClr = Color(0xfffafafa);
 const Color darkTextClr = Color(0xFFE3E6E4);
 const Color darkPrimaryClr = Color(0xFF43766C);
 const Color ligthPrimaryClr = Color(0xFF43766C);
-const Color iconClr = Color(0xFFB19470);
-const Color darkiconClr = Color(0xFF76453B);
+const Color darkiconClr = Color(0xFFB19470);
+const Color ligthiconClr = Color(0xFF76453B);
+
+//تجربة الالوان بتطبيق القران
+const Color c1 = Color(0xFFF3E9DC);
+const Color c2 = Color(0xFFC08552);
+const Color c3 = Color(0xFF5E3023);
+const Color c4 = Color(0xFF895737);
+const Color c5 = Color(0xFFDAB49D);
 
 class Themes {
   static final light = ThemeData(
-      useMaterial3: true,
-      primaryColor: lightBackgroundClr,
-      colorScheme: const ColorScheme(
-        brightness: Brightness.light,
-        primary: ligthPrimaryClr,
-        onPrimary: Colors.black,
-        secondary: ligthPrimaryClr,
-        onSecondary: ligthPrimaryClr,
-        error: Colors.red,
-        onError: Colors.red,
-        background: lightBackgroundClr,
-        onBackground: black,
-        surface: lightBackgroundClr,
-        onSurface: black,
-      ),
-      iconButtonTheme: const IconButtonThemeData(
-          style: ButtonStyle(iconColor: MaterialStatePropertyAll(darkiconClr))),
-      splashColor: ligthPrimaryClr.withOpacity(0.2),
-      hoverColor: Colors.transparent,
-      highlightColor: ligthPrimaryClr.withOpacity(0.2),
-      fontFamily: 'Ibmp',
-      iconTheme: const IconThemeData(color: darkiconClr));
+    useMaterial3: true,
+    primaryColor: lightBackgroundClr,
+    colorScheme: const ColorScheme(
+      brightness: Brightness.light,
+      primary: c3,
+      onPrimary: Colors.black,
+      secondary: c3,
+      onSecondary: c3,
+      error: Colors.red,
+      onError: Colors.red,
+      background: c1,
+      onBackground: black,
+      surface: c1,
+      onSurface: black,
+    ),
+    iconButtonTheme: const IconButtonThemeData(
+        style: ButtonStyle(iconColor: MaterialStatePropertyAll(ligthiconClr))),
+    splashColor: ligthiconClr.withOpacity(0.2),
+    hoverColor: Colors.transparent,
+    highlightColor: ligthiconClr.withOpacity(0.1),
+    fontFamily: 'Ibmp',
+    iconTheme: const IconThemeData(color: ligthiconClr),
+  );
+  // dark ************************************************************* dark
   static final dark = ThemeData(
       useMaterial3: true,
       primaryColor: darkBackgroundClr,
       colorScheme: const ColorScheme(
         brightness: Brightness.dark,
-        primary: darkPrimaryClr,
+        primary: c4,
         onPrimary: Colors.white,
-        secondary: darkPrimaryClr,
-        onSecondary: darkPrimaryClr,
+        secondary: c4,
+        onSecondary: c4,
         error: Colors.red,
         onError: Colors.red,
         background: darkBackgroundClr,
@@ -59,12 +68,12 @@ class Themes {
         onSurface: darkTextClr,
       ),
       iconButtonTheme: const IconButtonThemeData(
-          style: ButtonStyle(iconColor: MaterialStatePropertyAll(iconClr))),
-      splashColor: darkPrimaryClr.withOpacity(0.2),
+          style: ButtonStyle(iconColor: MaterialStatePropertyAll(darkiconClr))),
+      splashColor: darkiconClr.withOpacity(0.2),
       hoverColor: Colors.transparent,
-      highlightColor: darkPrimaryClr.withOpacity(0.2),
+      highlightColor: darkiconClr.withOpacity(0.1),
       fontFamily: 'Ibmp',
-      iconTheme: const IconThemeData(color: iconClr));
+      iconTheme: const IconThemeData(color: darkiconClr));
 }
 
 TextStyle get textStyle => TextStyle(
