@@ -25,10 +25,11 @@ class Button extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 7),
           decoration: BoxDecoration(
             color: Get.isDarkMode
-                ? ligthiconClr.withOpacity(0.2)
+                ? context.theme.colorScheme.background
                 : white.withOpacity(0.2),
             border: Border.all(
-              color: context.iconColor!,
+              color: context.theme.colorScheme.onSecondary.withOpacity(0.5),
+              // color: context.iconColor!,
             ),
             borderRadius: BorderRadius.circular(10),
           ),

@@ -34,8 +34,9 @@ class ShortDeker extends StatelessWidget {
             color: context.theme.colorScheme.background,
             border: Border.all(
               // color: context.theme.colorScheme.onSecondary,
-              color: context.theme.iconTheme.color!,
-              // width: 2,
+              // color: context.theme.iconTheme.color!,
+              color: context.theme.colorScheme.onSecondary.withOpacity(0.5),
+              width: 1.5,
             ),
 
             boxShadow: [

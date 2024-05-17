@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:quran/ui/screens/home/widgets/buttons_bar.dart';
 
-
 class CustomContainer extends StatelessWidget {
   const CustomContainer({
     super.key,
@@ -21,7 +20,10 @@ class CustomContainer extends StatelessWidget {
         // color: Get.isDarkMode ? c2.withOpacity(0.1) : c2.withOpacity(0.2),
         borderRadius: BorderRadius.circular(15),
         border: Border.all(
-          color: context.theme.iconTheme.color!,
+          // color: context.theme.iconTheme.color!,
+          color: context.theme.colorScheme.onSecondary.withOpacity(0.5),
+
+          width: 1.5,
         ),
       ),
       child: Column(

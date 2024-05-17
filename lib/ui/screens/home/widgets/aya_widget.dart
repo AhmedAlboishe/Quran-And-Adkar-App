@@ -16,17 +16,20 @@ class AyaWidget extends StatelessWidget {
   final String ayaInfo;
   final double? fontSize;
   final double? textHight;
+
   @override
   Widget build(BuildContext context) {
     return Container(
       // height: 80,
       margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-      padding: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 10),
+      padding: const EdgeInsets.only(left: 12, right: 12, top: 10, bottom: 10),
       decoration: BoxDecoration(
         // color: Get.isDarkMode ? c2.withOpacity(0.1) : c2.withOpacity(0.2),
         borderRadius: BorderRadius.circular(15),
         border: Border.all(
-          color: context.theme.iconTheme.color!,
+          // color: context.theme.iconTheme.color!,
+          color: context.theme.colorScheme.onSecondary.withOpacity(0.5),
+          width: 1.5,
         ),
       ),
       child: Column(
@@ -54,7 +57,7 @@ class AyaWidget extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-          ButtonsBar(subTitle: subTitle),
+          ButtonsBar(subTitle: '{$subTitle}\n[$ayaInfo]'),
         ],
       ),
     );

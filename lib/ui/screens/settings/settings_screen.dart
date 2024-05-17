@@ -1,10 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:quran/services/theme_services.dart';
-import 'package:quran/ui/screens/Islamic%20Occasions/Islamic_ccasions_screen.dart';
-import 'package:quran/ui/screens/notifications/notification_screen.dart';
 import 'package:quran/ui/size_config.dart';
 
+import '../islamic Occasions/islamic_occasions_screen.dart';
 import 'widgets/list_tile.dart';
 
 class SettingsScreen extends StatefulWidget {
@@ -43,17 +43,21 @@ class _SettingsScreenState extends State<SettingsScreen> {
             ),
             icon: Icons.dark_mode_outlined,
           ),
-          CusListTile(
-              onTap: () => Get.to(() => const NotificationScreen()),
-              title: 'التنبيهات',
-              icon: Icons.alarm),
+          // CusListTile(
+          //     onTap: () => Get.to(() => const NotificationScreen()),
+          //     title: 'التنبيهات',
+          //     icon: Icons.alarm),
 
           CusListTile(
               onTap: () => Get.to(() => const IslamicOccasionsScreen()),
               title: 'المناسبات الإسلامية',
               icon: Icons.date_range_rounded),
-          const ListTile(
-            title: Text('الإصدار 1.0.0 (تجريبي)'),
+          ListTile(
+            leading: Icon(
+              CupertinoIcons.info,
+              color: context.theme.iconTheme.color!,
+            ),
+            title: const Text('الإصدار 1.0.0'),
           ),
           // const Spacer(),
           // const Opacity(

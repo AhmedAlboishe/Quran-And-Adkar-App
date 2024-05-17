@@ -42,7 +42,7 @@ class _TotalAdkarState extends State<TotalAdkar> with TickerProviderStateMixin {
       // height: getProportionateScreenHeight(150),
       padding: EdgeInsets.only(
         // top: getProportionateScreenHeight(5),
-        top: getProportionateScreenHeight(60),
+        top: getProportionateScreenHeight(40),
       ),
       decoration: BoxDecoration(
         // color: context.theme.colorScheme.onSecondary.withOpacity(0.5),

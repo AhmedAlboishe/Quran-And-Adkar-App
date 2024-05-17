@@ -28,7 +28,7 @@ class _BottonNavWithAnimatedIconsState
   int selectedNavIndex = 0;
   List<Widget> pages = [
     const HomeScreen(),
-     SurasScreen(),
+    const SurasScreen(),
     const AllAdkarScreen(),
     const SettingsScreen(),
   ];

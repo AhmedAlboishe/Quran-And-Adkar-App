@@ -31,8 +31,9 @@ class CustomDetails extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
             border: Border.all(
-              color: context.theme.iconTheme.color!,
-            ),
+                // color: context.theme.iconTheme.color!,
+                color: context.theme.colorScheme.onSecondary.withOpacity(0.5),
+                width: 1.5),
             // color: Get.isDarkMode ? c2.withOpacity(0.2) : null,
             // gradient: LinearGradient(colors: [
             //   context.theme.iconTheme.color!.withOpacity(0.5),

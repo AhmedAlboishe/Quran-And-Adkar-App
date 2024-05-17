@@ -46,7 +46,9 @@ class _CustomPraiseState extends State<CustomPraise>
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
               border: Border.all(
-                   color: context.theme.iconTheme.color!,
+                //  color: context.theme.iconTheme.color!,
+                color: context.theme.colorScheme.onSecondary.withOpacity(0.5),
+                width: 1.5,
               ),
             ),
             child: Column(
@@ -91,17 +93,19 @@ class _CustomPraiseState extends State<CustomPraise>
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    GestureDetector(
-                      onTap: () {
-                        Clipboard.setData(ClipboardData(text: widget.titel));
-                        Fluttertoast.showToast(
-                            msg: 'تم النسخ',
-                            backgroundColor: const Color(0xFF616161));
-                      },
-                      child: Image.asset(
-                        'assets/icons/clipboard.png',
-                        height: 26,
-                        color: Get.isDarkMode ? darkTextClr : Colors.black,
+                    Expanded(
+                      child: GestureDetector(
+                        onTap: () {
+                          Clipboard.setData(ClipboardData(text: widget.titel));
+                          Fluttertoast.showToast(
+                              msg: 'تم النسخ',
+                              backgroundColor: const Color(0xFF616161));
+                        },
+                        child: Image.asset(
+                          'assets/icons/clipboard.png',
+                          height: 26,
+                          color: Get.isDarkMode ? darkTextClr : Colors.black,
+                        ),
                       ),
                     ),
                     const SizedBox(
@@ -110,14 +114,16 @@ class _CustomPraiseState extends State<CustomPraise>
                           // color: Colors.amber,
                           ),
                     ),
-                    GestureDetector(
-                      onTap: () {
-                        Share.share(widget.titel);
-                      },
-                      child: Image.asset(
-                        'assets/icons/share-2.png',
-                        height: 26,
-                        color: Get.isDarkMode ? darkTextClr : Colors.black,
+                    Expanded(
+                      child: GestureDetector(
+                        onTap: () {
+                          Share.share(widget.titel);
+                        },
+                        child: Image.asset(
+                          'assets/icons/share-2.png',
+                          height: 26,
+                          color: Get.isDarkMode ? darkTextClr : Colors.black,
+                        ),
                       ),
                     ),
                     const SizedBox(
@@ -126,24 +132,26 @@ class _CustomPraiseState extends State<CustomPraise>
                           // color: Colors.amber,
                           ),
                     ),
-                    GestureDetector(
-                      onTap: count >= 2
-                          ? () {
-                              setState(() {
-                                count = -1;
-                              });
-                            }
-                          : () {},
-                      child: Image.asset(
-                        'assets/icons/refresh-ccw.png',
-                        height: 26,
-                        color: Get.isDarkMode
-                            ? count >= 2
-                                ? darkTextClr
-                                : Colors.grey
-                            : count >= 2
-                                ? Colors.black
-                                : Colors.grey,
+                    Expanded(
+                      child: GestureDetector(
+                        onTap: count >= 2
+                            ? () {
+                                setState(() {
+                                  count = -1;
+                                });
+                              }
+                            : () {},
+                        child: Image.asset(
+                          'assets/icons/refresh-ccw.png',
+                          height: 26,
+                          color: Get.isDarkMode
+                              ? count >= 2
+                                  ? darkTextClr
+                                  : Colors.grey
+                              : count >= 2
+                                  ? Colors.black
+                                  : Colors.grey,
+                        ),
                       ),
                     ),
                   ],

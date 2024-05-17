@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CusListTile extends StatelessWidget {
   const CusListTile({
@@ -17,7 +18,10 @@ class CusListTile extends StatelessWidget {
     return ListTile(
       title: Text(title),
       trailing: trailing,
-      leading: Icon(icon),
+      leading: Icon(
+        icon,
+        color: context.theme.iconTheme.color!,
+      ),
       onTap: onTap,
     );
   }

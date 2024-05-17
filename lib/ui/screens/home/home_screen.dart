@@ -1,18 +1,13 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import 'package:quran/ui/screens/home/widgets/aya_widget.dart';
 import 'package:quran/ui/screens/home/widgets/custom_container.dart';
 import 'package:quran/ui/screens/home/widgets/custom_details.dart';
 import 'package:quran/ui/screens/home/widgets/custom_names.dart';
 import 'package:quran/ui/screens/home/widgets/short_deker.dart';
-import 'package:quran/ui/screens/quran/controllers/quran_controller.dart';
 import 'package:quran/ui/size_config.dart';
 
 import '../../../core/model/data_model.dart';
-import '../../../services/notification_services.dart';
 import 'widgets/custom_praise.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -27,10 +22,9 @@ class _HomeScreenState extends State<HomeScreen>
   final DataModel dataModel = DataModel();
   late final String duaa;
   late final String tasbih;
-  late final String ayaa;
+  late final DataModel ayaa;
   late final Map names;
-  final random = Random();
-  final QuranController quranController = Get.find();
+  // final QuranController quranController = Get.find();
   @override
   void initState() {
     // NotifyHelper().initializationNotification();
@@ -39,6 +33,7 @@ class _HomeScreenState extends State<HomeScreen>
     tasbih = dataModel.getTasbih();
     ayaa = dataModel.getAyaa();
     names = dataModel.getNames();
+
     super.initState();
   }
 
@@ -102,10 +97,7 @@ class _HomeScreenState extends State<HomeScreen>
             //   title: 'دعاء',
             //   subTitle: duaa,
             // ),
-            const AyaWidget(
-                subTitle:
-                    'هُوَ ٱلَّذِي جَعَلَ لَكُمُ ٱلۡأَرۡضَ ذَلُولٗا فَٱمۡشُواْ فِي مَنَاكِبِهَا وَكُلُواْ مِن رِّزۡقِهِۦۖ وَإِلَيۡهِ ٱلنُّشُورُ ١٥ ',
-                ayaInfo: 'سورة المُلك، أية 15'),
+            AyaWidget(subTitle: ayaa.ayaa!, ayaInfo: ayaa.numberOfAyaa!),
 
             DateTime.now().weekday == 5
                 ? const CustomContainer(
