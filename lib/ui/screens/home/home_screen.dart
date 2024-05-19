@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'package:quran/ui/screens/home/widgets/aya_widget.dart';
 import 'package:quran/ui/screens/home/widgets/custom_container.dart';
@@ -8,6 +9,7 @@ import 'package:quran/ui/screens/home/widgets/short_deker.dart';
 import 'package:quran/ui/size_config.dart';
 
 import '../../../core/model/data_model.dart';
+import 'controller/update_controller.dart';
 import 'widgets/custom_praise.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -24,6 +26,8 @@ class _HomeScreenState extends State<HomeScreen>
   late final String tasbih;
   late final DataModel ayaa;
   late final Map names;
+  final UpdateController updateController = Get.put(UpdateController());
+
   // final QuranController quranController = Get.find();
   @override
   void initState() {
