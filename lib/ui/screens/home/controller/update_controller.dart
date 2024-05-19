@@ -15,17 +15,23 @@ class UpdateController extends GetxController {
   }
 
   Future<void> checkForUpdates() async {
-    _appUpdateInfo = await InAppUpdate.checkForUpdate();
-    log('${_appUpdateInfo.updateAvailability}');
-    if (_appUpdateInfo.updateAvailability ==
-        UpdateAvailability.updateAvailable) {
-      try {
-        await InAppUpdate.startFlexibleUpdate();
-      } on PlatformException catch (e) {
-        Fluttertoast.showToast(msg: 'حدث خطأ');
-      } catch (e) {
-        Fluttertoast.showToast(msg: 'حدث خطأ');
+    try {
+      _appUpdateInfo = await InAppUpdate.checkForUpdate();
+      log('${_appUpdateInfo.updateAvailability}');
+      if (_appUpdateInfo.updateAvailability ==
+          UpdateAvailability.updateAvailable) {
+        try {
+          await InAppUpdate.startFlexibleUpdate();
+        } on PlatformException {
+          Fluttertoast.showToast(msg: 'حدث خطأ');
+        } catch (e) {
+          Fluttertoast.showToast(msg: 'حدث خطأ');
+        }
       }
+    } on PlatformException {
+      Fluttertoast.showToast(msg: 'حدث خطأ');
+    } catch (e) {
+      Fluttertoast.showToast(msg: 'حدث خطأ');
     }
   }
 }
