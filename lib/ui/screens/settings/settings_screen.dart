@@ -57,7 +57,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               CupertinoIcons.info,
               color: context.theme.iconTheme.color!,
             ),
-            title: const Text('الإصدار 1.0.0'),
+            title: const Text('إصدار 1.0.3'),
           ),
           // const Spacer(),
           // const Opacity(
