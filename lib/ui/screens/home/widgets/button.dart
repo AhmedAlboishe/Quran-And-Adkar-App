@@ -26,9 +26,10 @@ class Button extends StatelessWidget {
           decoration: BoxDecoration(
             color: Get.isDarkMode
                 ? context.theme.colorScheme.background
-                : white.withOpacity(0.2),
+                : white.withValues(alpha: 0.2),
             border: Border.all(
-              color: context.theme.colorScheme.onSecondary.withOpacity(0.5),
+              color:
+                  context.theme.colorScheme.onSecondary.withValues(alpha: 0.5),
               // color: context.iconColor!,
             ),
             borderRadius: BorderRadius.circular(10),

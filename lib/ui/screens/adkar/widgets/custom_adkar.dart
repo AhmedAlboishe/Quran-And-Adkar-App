@@ -41,7 +41,8 @@ class CustomAdkar extends StatelessWidget {
               )
             ],
             border: Border.all(
-              color: context.theme.colorScheme.onSecondary.withOpacity(0.5),
+              color:
+                  context.theme.colorScheme.onSecondary.withValues(alpha: 0.5),
               width: 1.5,
             ),
             borderRadius: BorderRadius.circular(15),

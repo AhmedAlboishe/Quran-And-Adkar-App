@@ -35,7 +35,8 @@ class _AllAdkarScreenState extends State<AllAdkarScreen> {
       appBar: AppBar(
         scrolledUnderElevation: 0,
         elevation: 0,
-        backgroundColor: context.theme.colorScheme.onSecondary.withOpacity(0.1),
+        backgroundColor:
+            context.theme.colorScheme.onSecondary.withValues(alpha: 0.1),
         title: Text(
           'الأذكار',
           style: TextStyle(
@@ -53,7 +54,6 @@ class _AllAdkarScreenState extends State<AllAdkarScreen> {
               physics: const BouncingScrollPhysics(),
               // mainAxisSize: MainAxisSize.min,
               children: [
-             
                 CustomAdkar(
                   title: 'أذكاري',
                   onBack: getTotal,

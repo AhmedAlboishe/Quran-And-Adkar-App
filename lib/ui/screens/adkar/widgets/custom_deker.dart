@@ -35,8 +35,8 @@ class CustomDeker extends StatelessWidget {
                     const EdgeInsets.symmetric(horizontal: 15, vertical: 7),
                 child: PhysicalModel(
                   color: context.theme.colorScheme.background,
-                  shadowColor:
-                      context.theme.colorScheme.onSecondary.withOpacity(0.5),
+                  shadowColor: context.theme.colorScheme.onSecondary
+                      .withValues(alpha: 0.5),
                   elevation: 4,
                   borderRadius: BorderRadius.circular(15),
                   child: GestureDetector(

@@ -14,11 +14,11 @@ class CustomNames extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
       padding: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 10),
       decoration: BoxDecoration(
-        // color: Get.isDarkMode ? c2.withOpacity(0.1) : c2.withOpacity(0.2),
+        // color: Get.isDarkMode ? c2.withValues(alpha: 0.1) : c2.withValues(alpha: 0.2),
         borderRadius: BorderRadius.circular(15),
         border: Border.all(
           // color: context.theme.iconTheme.color!,
-          color: context.theme.colorScheme.onSecondary.withOpacity(0.5),
+          color: context.theme.colorScheme.onSecondary.withValues(alpha: 0.5),
 
           width: 1.5,
         ),

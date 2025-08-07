@@ -27,7 +27,8 @@ class RepetitionWidget extends StatelessWidget {
             decoration: BoxDecoration(
               color: count >= index
                   ? context.theme.colorScheme.onSecondary
-                  : context.theme.colorScheme.onSecondary.withOpacity(0.3),
+                  : context.theme.colorScheme.onSecondary
+                      .withValues(alpha: 0.3),
               borderRadius: BorderRadius.circular(15),
             ),
           ),

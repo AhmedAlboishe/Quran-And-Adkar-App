@@ -225,7 +225,7 @@ class AdkarController extends GetxController {
                       child: Text(
                         'إلغاء',
                         style: TextStyle(
-                          color: Colors.red.withOpacity(0.9),
+                          color: Colors.red.withValues(alpha: 0.9),
                         ),
                       ),
                     ),

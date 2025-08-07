@@ -61,15 +61,16 @@ class _BottonNavWithAnimatedIconsState
         margin: const EdgeInsets.only(left: 24, right: 24, bottom: 15),
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
-          color: context.theme.colorScheme.background,
+          color: context.theme.colorScheme.surface,
           borderRadius: BorderRadius.circular(24),
           border: Border.all(
               color: Get.isDarkMode
-                  ? white.withOpacity(0.15)
-                  : black.withOpacity(0.15)),
+                  ? white.withValues(alpha: 0.15)
+                  : black.withValues(alpha: 0.15)),
           boxShadow: [
             BoxShadow(
-                color: context.theme.colorScheme.onSurface.withOpacity(0.05),
+                color:
+                    context.theme.colorScheme.onSurface.withValues(alpha: 0.05),
                 offset: const Offset(0, 5),
                 blurRadius: 20)
           ],
@@ -121,8 +122,8 @@ class _BottonNavWithAnimatedIconsState
       //     border: Border(
       //       top: BorderSide(
       //           color: Get.isDarkMode
-      //               ? white.withOpacity(0.15)
-      //               : black.withOpacity(0.15)),
+      //               ? white.withValues(alpha: 0.15)
+      //               : black.withValues(alpha: 0.15)),
       //     ),
       //     // borderRadius: BorderRadius.circular(24),
       //   ),

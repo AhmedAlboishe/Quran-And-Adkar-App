@@ -30,12 +30,13 @@ class ShortDeker extends StatelessWidget {
           // padding: const EdgeInsets.symmetric(vertical: 20),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
-            // color: darkPrimaryClr.withOpacity(0.5),
+            // color: darkPrimaryClr.withValues(alpha: 0.5),
             color: context.theme.colorScheme.background,
             border: Border.all(
               // color: context.theme.colorScheme.onSecondary,
               // color: context.theme.iconTheme.color!,
-              color: context.theme.colorScheme.onSecondary.withOpacity(0.5),
+              color:
+                  context.theme.colorScheme.onSecondary.withValues(alpha: 0.5),
               width: 1.5,
             ),
 
@@ -55,7 +56,7 @@ class ShortDeker extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(5),
                 decoration: BoxDecoration(
-                  color: context.theme.iconTheme.color!.withOpacity(0.1),
+                  color: context.theme.iconTheme.color!.withValues(alpha: 0.1),
                   shape: BoxShape.circle,
                 ),
                 child: Image.asset(

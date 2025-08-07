@@ -6,11 +6,14 @@ import 'package:quran/services/data_client.dart';
 import 'package:quran/services/theme_services.dart';
 import 'package:quran/ui/bottom_nav_bar_icon.dart';
 import 'package:quran/ui/theme.dart';
+import 'package:quran_library/quran.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await GetStorage.init();
   await DataClient().database;
+  QuranLibrary().init();
+
   // NotifyHelper().initializationNotification();
   // Notify.init();
   runApp(const QuranApp());

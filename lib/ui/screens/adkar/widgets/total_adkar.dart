@@ -45,19 +45,19 @@ class _TotalAdkarState extends State<TotalAdkar> with TickerProviderStateMixin {
         top: getProportionateScreenHeight(40),
       ),
       decoration: BoxDecoration(
-        // color: context.theme.colorScheme.onSecondary.withOpacity(0.5),
+        // color: context.theme.colorScheme.onSecondary.withValues(alpha: 0.5),
         borderRadius: const BorderRadius.only(
           bottomLeft: Radius.circular(30),
           bottomRight: Radius.circular(30),
         ),
-        // color: context.theme.colorScheme.onSecondary.withOpacity(0.1),
+        // color: context.theme.colorScheme.onSecondary.withValues(alpha: 0.1),
         gradient: LinearGradient(
           colors: [
-            context.theme.colorScheme.onSecondary.withOpacity(0.5),
-            context.theme.colorScheme.onSecondary.withOpacity(0.4),
-            context.theme.colorScheme.onSecondary.withOpacity(0.3),
-            context.theme.colorScheme.onSecondary.withOpacity(0.2),
-            context.theme.colorScheme.onSecondary.withOpacity(0.1),
+            context.theme.colorScheme.onSecondary.withValues(alpha: 0.5),
+            context.theme.colorScheme.onSecondary.withValues(alpha: 0.4),
+            context.theme.colorScheme.onSecondary.withValues(alpha: 0.3),
+            context.theme.colorScheme.onSecondary.withValues(alpha: 0.2),
+            context.theme.colorScheme.onSecondary.withValues(alpha: 0.1),
           ],
           begin: Alignment.bottomRight,
         ),
@@ -70,9 +70,9 @@ class _TotalAdkarState extends State<TotalAdkar> with TickerProviderStateMixin {
             child: WaveWidget(
               config: CustomConfig(
                 colors: [
-                  context.theme.colorScheme.onSecondary.withOpacity(0.2),
-                  context.theme.colorScheme.onSecondary.withOpacity(0.2),
-                  context.theme.colorScheme.onSecondary.withOpacity(0.2),
+                  context.theme.colorScheme.onSecondary.withValues(alpha: 0.2),
+                  context.theme.colorScheme.onSecondary.withValues(alpha: 0.2),
+                  context.theme.colorScheme.onSecondary.withValues(alpha: 0.2),
                 ],
                 durations: [9000, 8000, 7000],
                 heightPercentages: [

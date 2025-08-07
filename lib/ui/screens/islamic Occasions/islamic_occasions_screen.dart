@@ -141,7 +141,7 @@ class OccasionsWidget extends StatelessWidget {
             alignment: Alignment.centerRight,
             child: Container(
               decoration: BoxDecoration(
-                color: c3.withOpacity(0.4),
+                color: c3.withValues(alpha: .4),
                 borderRadius: BorderRadius.circular(10),
               ),
               width: calculateProgress(85, total),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:quran/ui/size_config.dart';
+import 'package:quran/ui/theme.dart';
 
 import '../controller/islamic_controller.dart';
 
@@ -36,14 +37,17 @@ class OccasionWidget extends StatelessWidget {
                   .clamp(0.0, 1.0), //(daysRemaining / 1000).toDouble(),
               // backgroundColor: Theme.of(context).canvasColor,
               color: daysRemaining == 0
-                  ? Theme.of(context).colorScheme.onSecondary.withOpacity(0.4)
-                  : Theme.of(context).colorScheme.onSecondary.withOpacity(0.4),
+                  ? Theme.of(context)
+                      .colorScheme
+                      .onSecondary
+                      .withValues(alpha: 0.4)
+                  : c2.withValues(alpha: 0.9),
             ),
             Container(
               height: MediaQuery.sizeOf(context).height / 11,
               decoration: BoxDecoration(
                 color:
-                    Theme.of(context).colorScheme.onSecondary.withOpacity(0.2),
+                    const Color.fromARGB(0, 17, 0, 255).withValues(alpha: 0.0),
               ),
               child: Padding(
                 padding: const EdgeInsets.only(left: 16, right: 10),
@@ -94,7 +98,7 @@ class OccasionWidget extends StatelessWidget {
             //   height: MediaQuery.sizeOf(context).height / 11,
             //   decoration: BoxDecoration(
             //     color:
-            //         Theme.of(context).colorScheme.onSecondary.withOpacity(0.4),
+            //         Theme.of(context).colorScheme.onSecondary.withValues(alpha: 0.4),
             //   ),
             // ),
           ],

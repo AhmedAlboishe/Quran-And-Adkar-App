@@ -47,7 +47,8 @@ class _CustomPraiseState extends State<CustomPraise>
               borderRadius: BorderRadius.circular(15),
               border: Border.all(
                 //  color: context.theme.iconTheme.color!,
-                color: context.theme.colorScheme.onSecondary.withOpacity(0.5),
+                color: context.theme.colorScheme.onSecondary
+                    .withValues(alpha: 0.5),
                 width: 1.5,
               ),
             ),
@@ -82,7 +83,7 @@ class _CustomPraiseState extends State<CustomPraise>
                             color: count >= index
                                 ? context.theme.colorScheme.onSecondary
                                 : context.theme.colorScheme.onSecondary
-                                    .withOpacity(0.3),
+                                    .withValues(alpha: 0.3),
                             borderRadius: BorderRadius.circular(15),
                           ),
                         ),
