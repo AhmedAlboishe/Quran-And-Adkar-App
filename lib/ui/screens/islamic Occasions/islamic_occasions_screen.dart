@@ -4,7 +4,6 @@ import 'package:hijri/hijri_calendar.dart';
 import 'package:quran/ui/screens/notifications/model/notification_model.dart';
 import 'package:quran/ui/size_config.dart';
 
-import '../../theme.dart';
 import 'widgets/occasion_widget.dart';
 
 class IslamicOccasionsScreen extends StatefulWidget {
@@ -113,75 +112,5 @@ class _IslamicOccasionsScreenState extends State<IslamicOccasionsScreen> {
             // );
           },
         ));
-  }
-}
-
-class OccasionsWidget extends StatelessWidget {
-  const OccasionsWidget({
-    super.key,
-    required this.total,
-    required this.title,
-  });
-  final int total;
-  final String title;
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-      height: 80,
-      width: double.infinity,
-      decoration: BoxDecoration(
-        color: c5,
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          Align(
-            alignment: Alignment.centerRight,
-            child: Container(
-              decoration: BoxDecoration(
-                color: c3.withValues(alpha: .4),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              width: calculateProgress(85, total),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(right: 10, left: 20),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  title,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                Text(
-                  '$total\nأيـــام',
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 17,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  double calculateProgress(int currentIndex, int total) {
-    int totalPages = total;
-    if (currentIndex < 1) {
-      return 0.0;
-    }
-    if (currentIndex > totalPages) {
-      return 100.0;
-    }
-    return (currentIndex / totalPages) * Get.width - 30;
   }
 }

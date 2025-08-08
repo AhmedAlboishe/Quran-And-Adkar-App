@@ -36,18 +36,12 @@ class OccasionWidget extends StatelessWidget {
               value: (1.0 - (daysRemaining / 355))
                   .clamp(0.0, 1.0), //(daysRemaining / 1000).toDouble(),
               // backgroundColor: Theme.of(context).canvasColor,
-              color: daysRemaining == 0
-                  ? Theme.of(context)
-                      .colorScheme
-                      .onSecondary
-                      .withValues(alpha: 0.4)
-                  : c2.withValues(alpha: 0.9),
+              color: Colors.redAccent,
             ),
             Container(
               height: MediaQuery.sizeOf(context).height / 11,
               decoration: BoxDecoration(
-                color:
-                    const Color.fromARGB(0, 17, 0, 255).withValues(alpha: 0.0),
+                color: c2.withValues(alpha: .1),
               ),
               child: Padding(
                 padding: const EdgeInsets.only(left: 16, right: 10),

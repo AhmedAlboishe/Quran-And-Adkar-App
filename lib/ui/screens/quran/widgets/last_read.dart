@@ -3,14 +3,11 @@ import 'package:get/get.dart';
 import 'package:quran_library/quran.dart';
 
 import '../../../size_config.dart';
+import '../controllers/last_read_services.dart';
 import '../quran_screen.dart';
 
 class LastRead extends StatelessWidget {
-  const LastRead({
-    super.key,
-    required this.pageNumber,
-  });
-  final int pageNumber;
+  const LastRead({super.key});
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -50,43 +47,44 @@ class LastRead extends StatelessWidget {
                 fontWeight: FontWeight.w700,
               ),
             ),
-            Obx(() => Center(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          QuranLibrary()
-                              .getCurrentSurahDataByPageNumber(
-                                  pageNumber: QuranLibrary().quranCtrl.lastPage)
-                              .arabicName
-                              .obs
-                              .value,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: getProportionateScreenWidth(18),
+            GetX(
+              init: LastReadService(),
+              builder: (controller) => Center(
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        QuranLibrary()
+                            .getCurrentSurahDataByPageNumber(
+                                pageNumber: controller.lastPageRead.value)
+                            .arabicName,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: getProportionateScreenWidth(18),
+                        ),
+                      ),
+                      Column(
+                        children: [
+                          const Icon(
+                            Icons.bookmark_added_outlined,
+                            size: 50,
                           ),
-                        ),
-                        Column(
-                          children: [
-                            const Icon(
-                              Icons.bookmark_added_outlined,
-                              size: 50,
+                          Text(
+                            'صفحة ${controller.lastPageRead.value}',
+                            style: TextStyle(
+                              fontSize: getProportionateScreenWidth(15),
                             ),
-                            Text(
-                              'صفحة ${QuranLibrary().currentPageNumber.obs.value}',
-                              style: TextStyle(
-                                fontSize: getProportionateScreenWidth(15),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
-                )),
+                ),
+              ),
+            ),
           ],
         ),
       ),

@@ -10,23 +10,31 @@ class QuranScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return QuranLibraryScreen(
-      pageIndex: 55,
-      isDark: Get.isDarkMode,
-      bannerStyle: BannerStyle(
-        bannerSvgPath: Get.isDarkMode
-            ? 'assets/svg/banner_night.svg'
-            : 'assets/svg/banner.svg',
-      ),
-      surahNameStyle: SurahNameStyle(
-        surahNameColor: Get.isDarkMode ? const Color(0xFF121212) : null,
-      ),
-      downloadFontsDialogStyle: DownloadFontsDialogStyle(
-        dividerColor: c3,
-        linearProgressBackgroundColor: c3.withValues(alpha: .2),
-        linearProgressColor: c2,
-        downloadButtonBackgroundColor: Get.isDarkMode ? c2 : c3,
-        iconColor: Get.isDarkMode ? c2 : c3,
+    return Theme(
+      data: ThemeData(useMaterial3: false),
+      child: QuranLibraryScreen(
+        // onPageChanged: (pageNumber) {
+        //   LastReadService().updateLastRead(
+        //     QuranLibrary().quranCtrl.getAyahsByPage(pageNumber).first,
+        //   );
+        // },
+        pageIndex: 55,
+        isDark: Get.isDarkMode,
+        bannerStyle: BannerStyle(
+          bannerSvgPath: Get.isDarkMode
+              ? 'assets/svg/banner_night.svg'
+              : 'assets/svg/banner.svg',
+        ),
+        surahNameStyle: SurahNameStyle(
+          surahNameColor: Get.isDarkMode ? const Color(0xFF121212) : null,
+        ),
+        downloadFontsDialogStyle: DownloadFontsDialogStyle(
+          dividerColor: c3,
+          linearProgressBackgroundColor: c3.withValues(alpha: .2),
+          linearProgressColor: c2,
+          downloadButtonBackgroundColor: Get.isDarkMode ? c2 : c3,
+          iconColor: Get.isDarkMode ? c2 : c3,
+        ),
       ),
     );
   }
