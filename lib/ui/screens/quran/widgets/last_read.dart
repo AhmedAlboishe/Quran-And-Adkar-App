@@ -76,7 +76,7 @@ class LastRead extends StatelessWidget {
                               size: 50,
                             ),
                             Text(
-                              'صفحة ${QuranLibrary().quranCtrl.lastPage.obs.value}',
+                              'صفحة ${QuranLibrary().currentPageNumber.obs.value}',
                               style: TextStyle(
                                 fontSize: getProportionateScreenWidth(15),
                               ),
