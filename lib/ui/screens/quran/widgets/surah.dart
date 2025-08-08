@@ -138,7 +138,9 @@ class Surah extends StatelessWidget {
       onTap: () {
         // QuranCtrl.instance.state.currentPageNumber.value = 50;
         Get.to(() => const QuranScreen());
-        QuranLibrary().jumpToSurah(surahIndex + 1);
+        Future.delayed(const Duration(milliseconds: 10), () {
+          QuranLibrary().jumpToSurah(surahIndex + 1);
+        });
       },
       child: Container(
         height: 90,
