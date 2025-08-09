@@ -35,13 +35,20 @@ class OccasionWidget extends StatelessWidget {
               minHeight: MediaQuery.sizeOf(context).height / 11,
               value: (1.0 - (daysRemaining / 355))
                   .clamp(0.0, 1.0), //(daysRemaining / 1000).toDouble(),
-              // backgroundColor: Theme.of(context).canvasColor,
-              color: Colors.redAccent,
+              backgroundColor: Colors.transparent,
+              color: Theme.of(context)
+                  .colorScheme
+                  .onSecondary
+                  .withValues(alpha: 0.4),
+              borderRadius: BorderRadius.circular(10),
             ),
             Container(
               height: MediaQuery.sizeOf(context).height / 11,
               decoration: BoxDecoration(
-                color: c2.withValues(alpha: .1),
+                color: Theme.of(context)
+                    .colorScheme
+                    .onSecondary
+                    .withValues(alpha: 0.2),
               ),
               child: Padding(
                 padding: const EdgeInsets.only(left: 16, right: 10),
